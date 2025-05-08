@@ -12,15 +12,22 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow-md py-4 sticky top-0 z-50">
+    <header className="bg-natural-light bg-paper-texture bg-repeat py-4 shadow-natural sticky top-0 z-50 border-b border-natural">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="text-xl md:text-2xl font-serif font-bold text-primary-dark">
-          <Link to="/" className="hover:text-primary transition-colors">山の民宿 木香</Link>
+          <Link to="/" className="hover:text-primary transition-colors flex items-center">
+            <svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 6.5C12 6.5 9 3.5 5.5 3.5C2.5 3.5 1 5.8 1 8.5C1 11.4 3 13 6 13C9 13 12 10 12 10" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M12 6.5C12 6.5 15 3.5 18.5 3.5C21.5 3.5 23 5.8 23 8.5C23 11.4 21 13 18 13C15 13 12 10 12 10" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M19 8.5C19 12.5 17 16.5 12 20.5C7 16.5 5 12.5 5 8.5" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+            <span>山荘ミルク</span>
+          </Link>
         </div>
         
         {/* モバイルメニューボタン */}
         <button 
-          className="md:hidden text-gray-600 hover:text-primary focus:outline-none" 
+          className="md:hidden text-primary hover:text-primary-dark focus:outline-none" 
           onClick={toggleMenu}
           aria-label="メニュー"
         >
@@ -44,29 +51,46 @@ const Header: React.FC = () => {
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
             <li>
-              <Link to="/" className="text-gray-700 hover:text-primary transition-colors">ホーム</Link>
+              <Link to="/" className="text-primary-dark hover:text-accent-dark transition-colors font-medium">ホーム</Link>
+            </li>
+            <li className="relative group">
+              <button className="text-primary-dark hover:text-accent-dark transition-colors flex items-center font-medium">
+                施設・サービス
+                <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute left-0 w-48 mt-2 py-2 bg-natural-light bg-paper-texture bg-repeat rounded-md shadow-natural-md hidden group-hover:block z-50 border border-natural">
+                <Link to="/about" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">施設について</Link>
+                <Link to="/facilities" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">施設案内</Link>
+                <Link to="/lodging" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">宿泊施設</Link>
+                <Link to="/dogrun" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">ドッグラン</Link>
+                <Link to="/wedding" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">結婚式</Link>
+                <Link to="/food-club" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">食の会</Link>
+              </div>
             </li>
             <li>
-              <Link to="/about" className="text-gray-700 hover:text-primary transition-colors">民宿について</Link>
+              <Link to="/products" className="text-primary-dark hover:text-accent-dark transition-colors font-medium">特産品</Link>
             </li>
-            <li>
-              <Link to="/facilities" className="text-gray-700 hover:text-primary transition-colors">施設案内</Link>
-            </li>
-            <li>
-              <Link to="/wedding" className="text-gray-700 hover:text-primary transition-colors">山の結婚式</Link>
-            </li>
-            <li>
-              <Link to="/products" className="text-gray-700 hover:text-primary transition-colors">手作り特産品</Link>
-            </li>
-            <li>
-              <Link to="/access" className="text-gray-700 hover:text-primary transition-colors">アクセス</Link>
+            <li className="relative group">
+              <button className="text-primary-dark hover:text-accent-dark transition-colors flex items-center font-medium">
+                ご案内
+                <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute left-0 w-48 mt-2 py-2 bg-natural-light bg-paper-texture bg-repeat rounded-md shadow-natural-md hidden group-hover:block z-50 border border-natural">
+                <Link to="/access" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">アクセス</Link>
+                <Link to="/monthly-schedule" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">営業カレンダー</Link>
+                <Link to="/contact" className="block px-4 py-2 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors">お問い合わせ</Link>
+              </div>
             </li>
           </ul>
         </nav>
         
         {/* カートアイコン */}
         <div className="flex items-center">
-          <Link to="/cart" className="text-gray-700 hover:text-primary relative p-2" aria-label="カートを見る">
+          <Link to="/cart" className="text-primary-dark hover:text-accent-dark relative p-2" aria-label="カートを見る">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               width="24" 
@@ -93,11 +117,11 @@ const Header: React.FC = () => {
 
       {/* モバイルメニュー */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-white border-t border-gray-200 mt-4">
+        <nav className="md:hidden bg-natural-light bg-paper-texture bg-repeat border-t border-natural mt-4">
           <ul className="flex flex-col">
             <li>
               <Link to="/" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 ホーム
@@ -105,42 +129,82 @@ const Header: React.FC = () => {
             </li>
             <li>
               <Link to="/about" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
                 onClick={() => setIsMenuOpen(false)}
               >
-                民宿について
+                施設について
               </Link>
             </li>
             <li>
               <Link to="/facilities" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
                 onClick={() => setIsMenuOpen(false)}
               >
                 施設案内
               </Link>
             </li>
             <li>
-              <Link to="/wedding" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+              <Link to="/lodging" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
                 onClick={() => setIsMenuOpen(false)}
               >
-                山の結婚式
+                宿泊施設
+              </Link>
+            </li>
+            <li>
+              <Link to="/dogrun" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                ドッグラン
+              </Link>
+            </li>
+            <li>
+              <Link to="/wedding" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                結婚式
+              </Link>
+            </li>
+            <li>
+              <Link to="/food-club" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                食の会
               </Link>
             </li>
             <li>
               <Link to="/products" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                手作り特産品
+                特産品
               </Link>
             </li>
             <li>
               <Link to="/access" 
-                className="block py-3 px-4 text-gray-700 hover:bg-natural-light"
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
                 onClick={() => setIsMenuOpen(false)}
               >
                 アクセス
+              </Link>
+            </li>
+            <li>
+              <Link to="/monthly-schedule" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                営業カレンダー
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" 
+                className="block py-3 px-4 text-primary-dark hover:text-accent-dark hover:bg-natural transition-colors border-l-4 border-primary-light"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                お問い合わせ
               </Link>
             </li>
           </ul>
