@@ -20,8 +20,6 @@ const ProductsPage: React.FC = () => {
 
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
-    // フィードバックを表示（実際はToastやメッセージなどを表示するといいでしょう）
-    console.log('Added to cart:', product);
   };
 
   let content;
@@ -46,9 +44,23 @@ const ProductsPage: React.FC = () => {
 
   return (
     <div className="products-page">
-      <h1>商品一覧</h1>
-      <p>こちらが当民宿自慢の商品です。</p>
-      {content}
+      <div className="products-hero">
+        <h1>山の手作り特産品</h1>
+        <p>自然の恵みと伝統の技から生まれた特別なアイテムをお届けします</p>
+      </div>
+      <div className="products-content">
+        <div className="products-intro">
+          <p>
+            当民宿では、山里の恵みを活かした手作りの品々をご用意しております。
+            地元の素材と昔ながらの知恵を大切に、一つ一つ丁寧に作り上げた特産品は、
+            山の自然と人の温もりが感じられる逸品です。
+          </p>
+          <p>
+            ご自宅用にはもちろん、大切な方へのギフトにもぜひご利用ください。
+          </p>
+        </div>
+        {content}
+      </div>
     </div>
   );
 };

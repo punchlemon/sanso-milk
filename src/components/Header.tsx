@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <header className="site-header">
       <div className="header-container">
         <div className="logo">
-          <Link to="/">民宿のホームページ</Link>
+          <Link to="/">山の民宿 木香</Link>
         </div>
         
         <nav className="main-nav">
@@ -20,9 +20,17 @@ const Header: React.FC = () => {
               <Link to="/">ホーム</Link>
             </li>
             <li>
-              <Link to="/products">商品</Link>
+              <a href="/#about">民宿について</a>
             </li>
-            {/* 他のナビゲーションリンク（宿泊情報など）はここに追加 */}
+            <li>
+              <a href="/#contact">アクセス</a>
+            </li>
+            <li>
+              <Link to="/products">手作り特産品</Link>
+            </li>
+            <li>
+              <a href="/#wedding-section">山の結婚式</a>
+            </li>
           </ul>
         </nav>
         

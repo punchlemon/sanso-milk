@@ -1,14 +1,13 @@
 /* ホームページ全体のスタイル */
 .home-page {
   width: 100%;
-  color: #333;
+  color: #2c1e0f;
+  font-family: "Hiragino Mincho Pro", "Yu Mincho", "MS PMincho", serif;
 }
 
 /* ヒーローセクション */
 .hero {
-  height: 500px;
-  /* 画像がない場合のフォールバックとして、グラデーションのみを使用 */
-  background-image: linear-gradient(45deg, #2a5885, #4a7fb5);
+  height: 600px;
   background-size: cover;
   background-position: center;
   color: white;
@@ -17,23 +16,38 @@
   justify-content: center;
   text-align: center;
   margin-bottom: 60px;
+  position: relative;
 }
 
+/* 山のヒーロー背景 */
+.hero.mountain {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('/images/mountain-hero.jpg');
+  background-attachment: fixed;
+}
+
+/* ヒーローコンテンツのスタイル */
 .hero-content {
   max-width: 800px;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-weight: 300;
 }
 
 .hero-buttons {
@@ -44,7 +58,8 @@
 
 /* 共通セクションスタイル */
 section {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+  padding: 40px 0;
 }
 
 .container {
@@ -55,9 +70,22 @@ section {
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #2a5885;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #3c2c16;
+  position: relative;
+  font-weight: 500;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #725c40;
 }
 
 .section-description {
@@ -65,26 +93,28 @@ section {
   max-width: 800px;
   margin: 0 auto 40px;
   font-size: 1.1rem;
-  color: #555;
+  color: #5a4a38;
+  line-height: 1.8;
 }
 
 /* ボタンスタイル */
 .button {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 4px;
+  padding: 14px 28px;
+  border-radius: 2px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  letter-spacing: 0.05em;
 }
 
 .primary-button {
-  background-color: #4a7fb5;
+  background-color: #5c4a2e;
   color: white;
 }
 
 .primary-button:hover {
-  background-color: #2a5885;
+  background-color: #483a25;
   transform: translateY(-2px);
 }
 
@@ -100,10 +130,15 @@ section {
 }
 
 /* 民宿紹介セクション */
+.about-section {
+  background-color: #f8f5f0;
+  padding: 80px 0;
+}
+
 .about-content {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
 }
 
 .about-text {
@@ -111,9 +146,10 @@ section {
 }
 
 .about-text p {
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin-bottom: 24px;
+  line-height: 1.9;
   font-size: 1.1rem;
+  color: #3c2c16;
 }
 
 .about-image {
@@ -121,29 +157,31 @@ section {
 }
 
 .placeholder-image {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  height: 300px;
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #888;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 特徴セクション */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
   margin-top: 40px;
 }
 
 .feature-card {
-  background-color: white;
-  border-radius: 8px;
+  background-color: #f8f5f0;
+  border-radius: 4px;
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  border-left: 3px solid #725c40;
 }
 
 .feature-card:hover {
@@ -153,33 +191,87 @@ section {
 .feature-icon {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #5c4a2e;
 }
 
 .feature-card h3 {
   margin-bottom: 15px;
-  color: #2a5885;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+/* 結婚式セクション */
+.wedding-section {
+  background-color: #f0ebe0;
+  padding: 80px 0;
+}
+
+.wedding-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.wedding-image {
+  flex: 1;
+}
+
+.wedding-text {
+  flex: 1;
+}
+
+.wedding-text p {
+  margin-bottom: 24px;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+.wedding-cta {
+  margin-top: 30px;
 }
 
 /* 商品紹介セクション */
 .products-preview-section {
-  background-color: #f8f9fa;
-  padding: 60px 0;
+  padding: 80px 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/images/wood-texture.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .products-cta {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 /* お問い合わせセクション */
+.contact-section {
+  background-color: #f8f5f0;
+  padding: 80px 0;
+}
+
 .contact-content {
   display: flex;
-  gap: 40px;
+  gap: 60px;
 }
 
 .contact-info {
   flex: 1;
   line-height: 1.8;
+  color: #3c2c16;
+  font-size: 1.1rem;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+}
+
+.access-note {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0ebe0;
+  border-left: 3px solid #725c40;
+  font-size: 0.95rem;
 }
 
 .contact-map {
@@ -187,13 +279,14 @@ section {
 }
 
 .placeholder-map {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  height: 300px;
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #888;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* レスポンシブ対応 */
@@ -207,8 +300,10 @@ section {
   }
 
   .about-content,
-  .contact-content {
+  .contact-content,
+  .wedding-content {
     flex-direction: column;
+    gap: 40px;
   }
 
   .hero-buttons {
@@ -219,5 +314,13 @@ section {
   .button {
     width: 100%;
     text-align: center;
+  }
+  
+  .wedding-image {
+    order: 1;
+  }
+  
+  .wedding-text {
+    order: 2;
   }
 }
