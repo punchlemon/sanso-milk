@@ -8,14 +8,13 @@ import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import Header from './components/Header';
-import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="flex flex-col min-h-screen font-serif text-gray-800 bg-natural-light">
         <Header />
-        <main className="main-content">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

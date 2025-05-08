@@ -1,5 +1,4 @@
 import React from 'react';
-import './ProductCard.css';
 
 export interface Product {
   id: string;
@@ -16,28 +15,30 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
-    <div className="product-card">
-      <div className="product-image-container">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1">
+      <div className="relative">
         {product.imageUrl ? (
           <img 
             src={product.imageUrl} 
             alt={product.name} 
-            className="product-image" 
+            className="w-full h-48 object-cover" 
           />
         ) : (
-          <div className="product-image-placeholder">
-            <span>写真準備中</span>
+          <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+            <span className="text-gray-500 text-sm">写真準備中</span>
           </div>
         )}
-        <div className="handmade-label">手作り</div>
+        <div className="absolute top-2 left-2 bg-accent text-white text-xs font-bold py-1 px-2 rounded-md">
+          手作り
+        </div>
       </div>
-      <div className="product-info">
-        <h3 className="product-name">{product.name}</h3>
-        <p className="product-description">{product.description}</p>
-        <div className="product-footer">
-          <p className="product-price">¥{product.price.toLocaleString()}</p>
+      <div className="p-4">
+        <h3 className="text-lg font-bold mb-2 text-primary-dark">{product.name}</h3>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-accent-dark font-bold">¥{product.price.toLocaleString()}</p>
           <button 
-            className="add-to-cart-button" 
+            className="bg-primary hover:bg-primary-dark text-white text-sm py-1 px-3 rounded transition-colors"
             onClick={() => onAddToCart(product)}
             aria-label={`${product.name}をカートに追加`}
           >
