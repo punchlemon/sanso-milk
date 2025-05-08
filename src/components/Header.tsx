@@ -20,16 +20,19 @@ const Header: React.FC = () => {
               <Link to="/">ホーム</Link>
             </li>
             <li>
-              <a href="/#about">民宿について</a>
+              <Link to="/about">民宿について</Link>
             </li>
             <li>
-              <a href="/#contact">アクセス</a>
+              <Link to="/facilities">施設案内</Link>
+            </li>
+            <li>
+              <Link to="/wedding">山の結婚式</Link>
             </li>
             <li>
               <Link to="/products">手作り特産品</Link>
             </li>
             <li>
-              <a href="/#wedding-section">山の結婚式</a>
+              <Link to="/access">アクセス</Link>
             </li>
           </ul>
         </nav>

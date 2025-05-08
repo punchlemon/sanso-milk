@@ -1,0 +1,364 @@
+.access-page {
+  font-family: "Hiragino Mincho Pro", "Yu Mincho", "MS PMincho", serif;
+  color: #3c2c16;
+}
+
+/* ヒーロー部分 */
+.access-page .page-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/access-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 60px;
+}
+
+.access-page .page-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.access-page .page-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* 共通セクションスタイル */
+.access-page section {
+  padding: 60px 0;
+  margin-bottom: 0;
+}
+
+.access-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.access-page .section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #3c2c16;
+  position: relative;
+  font-weight: 500;
+}
+
+.access-page .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #725c40;
+}
+
+.access-page .placeholder-image {
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.access-page .placeholder-image.mini {
+  height: 180px;
+}
+
+.access-page .placeholder-map {
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Location section */
+.access-page .location-section {
+  background-color: #f8f5f0;
+}
+
+.access-page .map-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.access-page .map-container {
+  width: 100%;
+}
+
+.access-page .map-info {
+  padding: 30px;
+  text-align: center;
+}
+
+.access-page .map-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.access-page .address {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.access-page .contact-info p {
+  margin-bottom: 5px;
+  font-size: 1.05rem;
+}
+
+/* Transportation section */
+.access-page .transportation-section {
+  background-color: white;
+}
+
+.access-page .transportation-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.access-page .transport-card {
+  background-color: #f8f5f0;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.access-page .transport-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.access-page .transport-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #3c2c16;
+  font-weight: 500;
+  text-align: center;
+}
+
+.access-page .transport-card ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.access-page .transport-card li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #3c2c16;
+}
+
+.access-page .parking-info,
+.access-page .pickup-info {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9e4d9;
+  color: #5c4a2e;
+  font-size: 1.1rem;
+}
+
+/* Route section */
+.access-page .route-section {
+  background-color: #f8f5f0;
+}
+
+.access-page .route-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.access-page .route-text h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.access-page .route-text p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #3c2c16;
+}
+
+/* Area info section */
+.access-page .area-info-section {
+  background-color: white;
+}
+
+.access-page .area-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.access-page .tourist-spots h3 {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.access-page .spot-list {
+  list-style: none;
+  padding: 0;
+}
+
+.access-page .spot-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9e4d9;
+}
+
+.access-page .spot-list li:last-child {
+  border-bottom: none;
+}
+
+.access-page .spot-name {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+.access-page .spot-distance {
+  color: #5c4a2e;
+}
+
+.access-page .area-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.access-page .area-image-item {
+  text-align: center;
+}
+
+.access-page .area-image-item p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #3c2c16;
+}
+
+/* Note section */
+.access-page .note-section {
+  background-color: #f8f5f0;
+}
+
+.access-page .note-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.access-page .note-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #3c2c16;
+  font-weight: 500;
+  text-align: center;
+}
+
+.access-page .note-content p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #3c2c16;
+}
+
+/* Contact section */
+.access-page .contact-section {
+  background-color: white;
+}
+
+.access-page .contact-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #3c2c16;
+}
+
+.access-page .contact-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.access-page .contact-method {
+  background-color: #f8f5f0;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.access-page .contact-method h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.access-page .contact-method p {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #3c2c16;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .access-page .page-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .access-page .page-hero p {
+    font-size: 1rem;
+  }
+  
+  .access-page .transportation-methods,
+  .access-page .route-info,
+  .access-page .area-info,
+  .access-page .contact-methods {
+    grid-template-columns: 1fr;
+  }
+  
+  .access-page .area-images {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

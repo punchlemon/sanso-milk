@@ -1,0 +1,267 @@
+.about-page {
+  font-family: "Hiragino Mincho Pro", "Yu Mincho", "MS PMincho", serif;
+  color: #3c2c16;
+}
+
+/* ヒーロー部分 */
+.page-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/about-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 60px;
+}
+
+.page-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.page-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* 共通セクションスタイル */
+section {
+  margin-bottom: 80px;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #3c2c16;
+  position: relative;
+  font-weight: 500;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #725c40;
+}
+
+/* 民宿について */
+.about-section {
+  background-color: #f8f5f0;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.about-text p {
+  margin-bottom: 24px;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+.about-image {
+  flex: 1;
+}
+
+.placeholder-image {
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 歴史セクション */
+.history-section {
+  padding: 60px 0;
+}
+
+.history-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.history-image {
+  flex: 1;
+}
+
+.history-text {
+  flex: 1;
+}
+
+.history-text p {
+  margin-bottom: 24px;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+/* 理念セクション */
+.philosophy-section {
+  background-color: #f8f5f0;
+  padding: 60px 0;
+}
+
+.philosophy-text {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #3c2c16;
+}
+
+.philosophy-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.value-item {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.value-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #5c4a2e;
+  font-weight: 500;
+}
+
+.value-item p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3c2c16;
+}
+
+/* CTA セクション */
+.cta-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/cta-background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  text-align: center;
+  color: white;
+}
+
+.cta-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* ボタンスタイル */
+.button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 2px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.primary-button {
+  background-color: #5c4a2e;
+  color: white;
+}
+
+.primary-button:hover {
+  background-color: #483a25;
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.secondary-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .page-hero p {
+    font-size: 1rem;
+  }
+  
+  .about-content,
+  .history-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .philosophy-values {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    width: 80%;
+  }
+}

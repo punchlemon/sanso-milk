@@ -1,0 +1,349 @@
+.facilities-page {
+  font-family: "Hiragino Mincho Pro", "Yu Mincho", "MS PMincho", serif;
+  color: #3c2c16;
+}
+
+/* ヒーロー部分 */
+.facilities-page .page-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/facilities-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 60px;
+}
+
+.facilities-page .page-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.facilities-page .page-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* セクション共通 */
+.facilities-page section {
+  padding: 60px 0;
+  margin-bottom: 0;
+}
+
+.facilities-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.facilities-page .section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #3c2c16;
+  position: relative;
+  font-weight: 500;
+}
+
+.facilities-page .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #725c40;
+}
+
+.facilities-page .placeholder-image {
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c7b64;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.facilities-page .placeholder-image.mini {
+  height: 200px;
+}
+
+/* お部屋セクション */
+.facilities-page .room-section {
+  background-color: #f8f5f0;
+}
+
+.facilities-page .rooms-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.facilities-page .room-types {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.facilities-page .room-card {
+  display: flex;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.facilities-page .room-image {
+  flex: 1;
+  min-height: 100%;
+}
+
+.facilities-page .room-info {
+  flex: 1;
+  padding: 30px;
+}
+
+.facilities-page .room-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.facilities-page .room-capacity {
+  font-size: 1rem;
+  color: #5c4a2e;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.facilities-page .room-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3c2c16;
+  margin-bottom: 20px;
+}
+
+.facilities-page .room-amenities {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.facilities-page .room-amenities li {
+  margin-bottom: 5px;
+  color: #5a4a38;
+}
+
+.facilities-page .room-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5c4a2e;
+}
+
+/* お食事セクション */
+.facilities-page .dining-section {
+  background-color: white;
+}
+
+.facilities-page .dining-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.facilities-page .dining-text {
+  flex: 1;
+}
+
+.facilities-page .dining-text p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+.facilities-page .dining-image {
+  flex: 1;
+}
+
+.facilities-page .meal-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.facilities-page .meal-card {
+  background-color: #f8f5f0;
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #725c40;
+}
+
+.facilities-page .meal-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.facilities-page .meal-card p {
+  line-height: 1.8;
+  color: #3c2c16;
+}
+
+.facilities-page .cuisine-note {
+  background-color: #f0ebe0;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #5a4a38;
+}
+
+/* お風呂セクション */
+.facilities-page .bath-section {
+  background-color: #f8f5f0;
+}
+
+.facilities-page .bath-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.facilities-page .bath-image {
+  flex: 1;
+}
+
+.facilities-page .bath-text {
+  flex: 1;
+}
+
+.facilities-page .bath-text p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #3c2c16;
+}
+
+.facilities-page .bath-hours {
+  margin-top: 30px;
+  padding: 15px 20px;
+  background-color: #e9e4d9;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.facilities-page .bath-hours h4 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.facilities-page .bath-hours p {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* 体験活動セクション */
+.facilities-page .activities-section {
+  background-color: white;
+}
+
+.facilities-page .activities-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.facilities-page .activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.facilities-page .activity-card {
+  background-color: #f8f5f0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.facilities-page .activity-card:hover {
+  transform: translateY(-5px);
+}
+
+.facilities-page .activity-image {
+  width: 100%;
+  border-bottom: 2px solid #e9e4d9;
+}
+
+.facilities-page .activity-card h3 {
+  font-size: 1.2rem;
+  margin: 15px;
+  color: #3c2c16;
+  font-weight: 500;
+}
+
+.facilities-page .activity-card p {
+  padding: 0 15px 15px;
+  font-size: 0.95rem;
+  color: #3c2c16;
+  line-height: 1.6;
+}
+
+.facilities-page .activities-note {
+  background-color: #f0ebe0;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #5a4a38;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .facilities-page .page-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .facilities-page .page-hero p {
+    font-size: 1rem;
+  }
+  
+  .facilities-page .room-card,
+  .facilities-page .dining-content,
+  .facilities-page .bath-content {
+    flex-direction: column;
+  }
+  
+  .facilities-page .meal-types {
+    grid-template-columns: 1fr;
+  }
+  
+  .facilities-page .activities-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .facilities-page .activities-grid {
+    grid-template-columns: 1fr;
+  }
+}

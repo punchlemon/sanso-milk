@@ -5,38 +5,32 @@ import './HomePage.css';
 const HomePage: React.FC = () => {
   return (
     <div className="home-page">
-      <section className="hero mountain">
+      <div className="hero-section">
         <div className="hero-content">
-          <h1>大自然の懐に抱かれる山の民宿</h1>
-          <p className="hero-subtitle">心安らぐ静寂と温かい手料理でおもてなし</p>
-          <div className="hero-buttons">
-            <a href="#about" className="button primary-button">詳しく見る</a>
-            <Link to="/products" className="button secondary-button">手作り特産品</Link>
-          </div>
+          <h1>山の民宿 木香</h1>
+          <p>大自然の中で、心安らぐひとときを</p>
+          <Link to="/about" className="hero-button">民宿について</Link>
         </div>
-      </section>
+      </div>
 
-      <section id="about" className="about-section">
+      <section className="intro-section">
         <div className="container">
-          <h2 className="section-title">山小屋の民宿について</h2>
-          <div className="about-content">
-            <div className="about-text">
+          <div className="intro-content">
+            <div className="intro-text">
+              <h2>自然と調和する山の民宿</h2>
               <p>
-                四季折々の美しい自然に囲まれた山あいの民宿は、都会の喧騒から離れ、
-                大自然の息吹を肌で感じることができる特別な空間です。
-                薪ストーブの暖かな灯りと、木の香り漂う館内で、心からのリラックスタイムをお過ごしください。
+                山の民宿「木香」へようこそ。四季折々の美しい自然に囲まれた当館は、
+                都会の喧騒から離れて、心身ともにリフレッシュしていただける特別な空間です。
               </p>
               <p>
-                地元で収穫された新鮮な山の幸を活かした温かい手料理は、当民宿の自慢のひとつ。
-                昔ながらの製法で作る郷土料理と、四季折々の自然の恵みをお楽しみいただけます。
+                薪ストーブの温かな灯りと、山の幸を活かした手作り料理でおもてなし。
+                静寂に包まれた山の風景と共に、ゆっくりと流れる時間をお楽しみください。
               </p>
-              <p>
-                静寂に包まれた山の風景を眺めながら、忙しい日常を忘れてゆったりと流れる時間をご堪能ください。
-              </p>
+              <Link to="/about" className="button">もっと詳しく</Link>
             </div>
-            <div className="about-image">
-              {/* 実際の山小屋画像に差し替え */}
-              <div className="placeholder-image">山小屋の外観</div>
+            <div className="intro-image">
+              {/* 実際の民宿の外観写真に差し替え */}
+              <div className="placeholder-image">民宿外観</div>
             </div>
           </div>
         </div>
@@ -44,87 +38,104 @@ const HomePage: React.FC = () => {
 
       <section className="features-section">
         <div className="container">
-          <h2 className="section-title">山の民宿の魅力</h2>
-          <div className="features-grid">
+          <h2 className="section-title">木香の魅力</h2>
+          <div className="features">
+            <div className="feature-card">
+              <div className="feature-icon">🏔️</div>
+              <h3>雄大な自然</h3>
+              <p>四季折々の美しい山の景色を窓から一望。森林浴効果で心身ともにリラックス</p>
+            </div>
             <div className="feature-card">
               <div className="feature-icon">🔥</div>
               <h3>薪ストーブの温もり</h3>
-              <p>冬は薪ストーブの優しい温もりに包まれ、雪景色を眺めながら至福のひとときを。</p>
+              <p>冬は薪ストーブの心地よい暖かさ。パチパチと音を立てる炎を眺めながら特別なひとときを</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🍲</div>
-              <h3>山の幸の手料理</h3>
-              <p>地元の季節の食材を使った心温まる手料理で、山里の豊かな味わいをご堪能いただけます。</p>
+              <h3>地元の山の幸</h3>
+              <p>地元で採れた季節の食材を使用した、心温まる手作り料理の数々をお楽しみください</p>
             </div>
-            <div className="feature-card">
-              <div className="feature-icon">🌲</div>
-              <h3>森林浴と散策</h3>
-              <p>周囲の森を散策して、マイナスイオンたっぷりの自然を体感できるトレッキングコースも。</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">💍</div>
-              <h3>山の結婚式</h3>
-              <p>壮大な自然を背景に、アットホームで心温まる結婚式も承っております。</p>
-            </div>
+          </div>
+          <div className="features-link">
+            <Link to="/facilities" className="button">施設を見る</Link>
           </div>
         </div>
       </section>
 
       <section className="wedding-section">
         <div className="container">
-          <h2 className="section-title">自然に囲まれた山の結婚式</h2>
           <div className="wedding-content">
             <div className="wedding-image">
-              {/* 実際の結婚式の画像に差し替え */}
-              <div className="placeholder-image">山の風景と結婚式</div>
+              {/* 実際の結婚式写真に差し替え */}
+              <div className="placeholder-image">山の結婚式</div>
             </div>
             <div className="wedding-text">
+              <h2>山の結婚式</h2>
               <p>
-                大自然の息吹を感じながら、大切な人たちに見守られる心温まる結婚式。
-                山々に囲まれた静かな環境で、お二人だけの特別な一日を演出します。
+                大自然に囲まれた特別な場所で、お二人の大切な一日を過ごしませんか？
+                四季折々の美しい景色の中で、心に残る結婚式をお手伝いします。
               </p>
               <p>
-                手作りの料理でのおもてなし、地元の花々で彩られた会場、そして何よりも自然と調和した
-                アットホームな雰囲気が、ゲストの皆様の心に残る思い出となることでしょう。
+                薪ストーブの温かな灯りに照らされた館内や、晴れた日には青空の下で。
+                自然と調和したアットホームなウェディングをご提案します。
               </p>
-              <div className="wedding-cta">
-                <a href="#contact" className="button primary-button">結婚式についてお問い合わせ</a>
-              </div>
+              <Link to="/wedding" className="button">詳しくはこちら</Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="products-preview-section">
+      <section className="products-section">
         <div className="container">
-          <h2 className="section-title">山の手作り特産品</h2>
-          <p className="section-description">
-            地元の素材と伝統の技法で作られた特産品は、山の恵みがぎゅっと詰まった自慢の品々です。
-            当館でしか手に入らない特別な味わいを、お土産やギフトにぜひどうぞ。
+          <h2 className="section-title">手作り特産品</h2>
+          <p className="products-intro">
+            山里の自然の恵みを活かした、心を込めた手作り特産品をご用意しております。
+            当館でのお食事で気に入っていただいたものや、山の素材を活かした品々を
+            ご自宅でもお楽しみいただけます。
           </p>
-          <div className="products-cta">
-            <Link to="/products" className="button primary-button">
-              特産品を見る
-            </Link>
+          <div className="products-link">
+            <Link to="/products" className="button">特産品を見る</Link>
+          </div>
+          {/* 実際の特産品写真に差し替え */}
+          <div className="products-image">
+            <div className="placeholder-image">特産品の写真</div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="contact-section">
+      <section className="access-section">
         <div className="container">
-          <h2 className="section-title">お問い合わせ</h2>
-          <div className="contact-content">
-            <div className="contact-info">
-              <p><strong>山の民宿 木香</strong></p>
-              <p><strong>住所：</strong> 〒XXX-XXXX 〇〇県〇〇市〇〇町山路123-45</p>
-              <p><strong>電話：</strong> 0X0-XXXX-XXXX</p>
-              <p><strong>メール：</strong> info@yamaminshuku.jp</p>
-              <p className="access-note">※山道のため、アクセス方法については事前にお問い合わせください。送迎も承っております。</p>
+          <div className="access-content">
+            <div className="access-text">
+              <h2>アクセス</h2>
+              <p>
+                緑豊かな山間にある当館は、都会の喧騒から離れた場所にございますが、
+                〇〇ICからお車で約40分とアクセスも便利です。
+              </p>
+              <p>
+                最寄り駅からの送迎も行っておりますので、お気軽にお問い合わせください。
+                周辺の観光スポットへのアクセスも良好です。
+              </p>
+              <Link to="/access" className="button">詳しいアクセス情報</Link>
             </div>
-            <div className="contact-map">
-              {/* 実際の地図を埋め込む場合はこちら */}
-              <div className="placeholder-map">地図がここに表示されます</div>
+            <div className="access-map">
+              {/* 実際の地図に差し替え */}
+              <div className="placeholder-image">アクセスマップ</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-content">
+            <h2>山の自然に囲まれた特別な時間を</h2>
+            <p>ご予約・お問い合わせは、お電話またはメールにて承っております</p>
+            <div className="cta-contact">
+              <p className="phone">0X0-XXXX-XXXX</p>
+              <p className="email">info@yamaminshuku.jp</p>
+            </div>
+            <p className="cta-note">※繁忙期は電話がつながりにくい場合がございます。メールでのお問い合わせをおすすめします。</p>
           </div>
         </div>
       </section>
