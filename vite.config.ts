@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default defineConfig(({ command }) => ({
   plugins: [react()],
   server: {
     // 開発中にHTTPSをサポートする場合はここでコメントを解除

@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard, { type Product } from '../components/ProductCard';
-import { fetchProducts, selectAllProducts, selectProductsStatus, selectProductsError } from '../store/slices/productsSlice';
+import {
+  fetchProducts,
+  selectAllProducts,
+  selectProductsStatus,
+  selectProductsError,
+} from '../store/slices/productsSlice';
 import { addToCart } from '../store/slices/cartSlice';
 import type { AppDispatch } from '../store';
 
@@ -26,14 +31,16 @@ const ProductsPage: React.FC = () => {
   if (status === 'loading') {
     content = (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-pulse text-gray-600 text-lg">商品情報を読み込み中...</div>
+        <div className="animate-pulse text-gray-600 text-lg">
+          商品情報を読み込み中...
+        </div>
       </div>
     );
   } else if (status === 'succeeded') {
     content = (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map(product => (
-          <ProductCard 
+        {products.map((product) => (
+          <ProductCard
             key={product.id}
             product={product}
             onAddToCart={handleAddToCart}
@@ -52,11 +59,17 @@ const ProductsPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* ヒーローセクション */}
-      <div className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center" 
-           style={{backgroundImage: 'url("/images/products-hero.jpg")'}}>
+      <div
+        className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: 'url("/images/products-hero.jpg")' }}
+      >
         <div className="text-center text-white z-10 px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">山の手作り特産品</h1>
-          <p className="text-lg md:text-xl">自然の恵みと伝統の技から生まれた特別なアイテムをお届けします</p>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">
+            山の手作り特産品
+          </h1>
+          <p className="text-lg md:text-xl">
+            自然の恵みと伝統の技から生まれた特別なアイテムをお届けします
+          </p>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>

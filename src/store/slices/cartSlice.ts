@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
       const existingIndex = state.items.findIndex(
-        (item) => item.product.id === action.payload.id
+        (item) => item.product.id === action.payload.id,
       );
 
       if (existingIndex >= 0) {
@@ -41,12 +41,12 @@ export const cartSlice = createSlice({
     removeFromCart: (state, action: PayloadAction<string>) => {
       // 商品IDを受け取り、該当商品をカートから削除
       state.items = state.items.filter(
-        (item) => item.product.id !== action.payload
+        (item) => item.product.id !== action.payload,
       );
     },
     updateQuantity: (
       state,
-      action: PayloadAction<{ id: string; quantity: number }>
+      action: PayloadAction<{ id: string; quantity: number }>,
     ) => {
       const { id, quantity } = action.payload;
       const existingItem = state.items.find((item) => item.product.id === id);
@@ -78,7 +78,7 @@ export const selectCartItemCount = (state: RootState) =>
 export const selectCartTotal = (state: RootState) =>
   state.cart.items.reduce(
     (total, item) => total + item.product.price * item.quantity,
-    0
+    0,
   );
 
 export default cartSlice.reducer;

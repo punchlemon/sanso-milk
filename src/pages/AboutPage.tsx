@@ -5,11 +5,17 @@ const AboutPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* ヒーローセクション */}
-      <div className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center" 
-           style={{backgroundImage: 'url("/images/about-hero.jpg")'}}>
+      <div
+        className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: 'url("/images/about-hero.jpg")' }}
+      >
         <div className="text-center text-white z-10 px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">山小屋の民宿について</h1>
-          <p className="text-lg md:text-xl">伝統と自然が織りなす、心安らぐ時間</p>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">
+            山小屋の民宿について
+          </h1>
+          <p className="text-lg md:text-xl">
+            伝統と自然が織りなす、心安らぐ時間
+          </p>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
@@ -19,7 +25,9 @@ const AboutPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-serif font-bold mb-6 text-primary-dark">自然に囲まれた特別な空間</h2>
+              <h2 className="text-3xl font-serif font-bold mb-6 text-primary-dark">
+                自然に囲まれた特別な空間
+              </h2>
               <p className="mb-4 text-gray-700">
                 四季折々の美しい自然に囲まれた山あいの民宿は、都会の喧騒から離れ、
                 大自然の息吹を肌で感じることができる特別な空間です。
@@ -46,7 +54,9 @@ const AboutPage: React.FC = () => {
       {/* 歴史セクション */}
       <section className="py-16 bg-natural-light">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-10 text-primary-dark text-center">民宿の歴史</h2>
+          <h2 className="text-3xl font-serif font-bold mb-10 text-primary-dark text-center">
+            民宿の歴史
+          </h2>
           <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
               {/* 実際の歴史的な写真に差し替え */}
@@ -76,7 +86,9 @@ const AboutPage: React.FC = () => {
       {/* 理念セクション */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-8 text-primary-dark text-center">私たちの想い</h2>
+          <h2 className="text-3xl font-serif font-bold mb-8 text-primary-dark text-center">
+            私たちの想い
+          </h2>
           <div className="max-w-3xl mx-auto mb-12">
             <p className="text-gray-700 text-center text-lg italic">
               山の民宿「木香」では、お客様に「自然の中で過ごす豊かな時間」をお届けすることをモットーにしています。
@@ -86,16 +98,28 @@ const AboutPage: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-natural-light p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 text-primary-dark">自然との調和</h3>
-              <p className="text-gray-700">周囲の自然環境を大切にし、四季の移ろいを感じる暮らしを提供します。</p>
+              <h3 className="text-xl font-bold mb-3 text-primary-dark">
+                自然との調和
+              </h3>
+              <p className="text-gray-700">
+                周囲の自然環境を大切にし、四季の移ろいを感じる暮らしを提供します。
+              </p>
             </div>
             <div className="bg-natural-light p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 text-primary-dark">心温まるおもてなし</h3>
-              <p className="text-gray-700">訪れるすべての方に家族のような温かさで接し、居心地の良い空間を作ります。</p>
+              <h3 className="text-xl font-bold mb-3 text-primary-dark">
+                心温まるおもてなし
+              </h3>
+              <p className="text-gray-700">
+                訪れるすべての方に家族のような温かさで接し、居心地の良い空間を作ります。
+              </p>
             </div>
             <div className="bg-natural-light p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 text-primary-dark">伝統の継承</h3>
-              <p className="text-gray-700">山里の暮らしの知恵や手仕事の技術を大切に守り、次の世代に伝えていきます。</p>
+              <h3 className="text-xl font-bold mb-3 text-primary-dark">
+                伝統の継承
+              </h3>
+              <p className="text-gray-700">
+                山里の暮らしの知恵や手仕事の技術を大切に守り、次の世代に伝えていきます。
+              </p>
             </div>
           </div>
         </div>
@@ -105,13 +129,23 @@ const AboutPage: React.FC = () => {
       <section className="py-16 bg-primary-dark text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-serif font-bold mb-4">自然の中で特別なひとときを</h2>
-            <p className="text-lg mb-8">山の民宿「木香」で、忘れられない思い出を作りませんか？</p>
+            <h2 className="text-3xl font-serif font-bold mb-4">
+              自然の中で特別なひとときを
+            </h2>
+            <p className="text-lg mb-8">
+              山の民宿「木香」で、忘れられない思い出を作りませんか？
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/facilities" className="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-6 rounded transition-colors">
+              <Link
+                to="/facilities"
+                className="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-6 rounded transition-colors"
+              >
                 施設を見る
               </Link>
-              <Link to="/access" className="bg-transparent hover:bg-white border-2 border-white hover:text-primary-dark text-white font-bold py-3 px-6 rounded transition-colors">
+              <Link
+                to="/access"
+                className="bg-transparent hover:bg-white border-2 border-white hover:text-primary-dark text-white font-bold py-3 px-6 rounded transition-colors"
+              >
                 アクセス情報
               </Link>
             </div>

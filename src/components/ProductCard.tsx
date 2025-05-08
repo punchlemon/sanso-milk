@@ -18,10 +18,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1">
       <div className="relative">
         {product.imageUrl ? (
-          <img 
-            src={product.imageUrl} 
-            alt={product.name} 
-            className="w-full h-48 object-cover" 
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            className="w-full h-48 object-cover"
           />
         ) : (
           <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
@@ -33,11 +33,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-bold mb-2 text-primary-dark">{product.name}</h3>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+        <h3 className="text-lg font-bold mb-2 text-primary-dark">
+          {product.name}
+        </h3>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+          {product.description}
+        </p>
         <div className="flex justify-between items-center">
-          <p className="text-accent-dark font-bold">¥{product.price.toLocaleString()}</p>
-          <button 
+          <p className="text-accent-dark font-bold">
+            ¥{product.price.toLocaleString()}
+          </p>
+          <button
             className="bg-primary hover:bg-primary-dark text-white text-sm py-1 px-3 rounded transition-colors"
             onClick={() => onAddToCart(product)}
             aria-label={`${product.name}をカートに追加`}
