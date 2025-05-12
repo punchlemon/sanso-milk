@@ -2,12 +2,60 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../components/ImageSlider';
 
+// 施設情報の型定義
+interface Facility {
+  title: string;
+  description: string;
+  image: string;
+  path: string;
+}
+
 const HomePage: React.FC = () => {
   // スライダー用の画像配列 - 絶対パスを使用して確実に読み込む
   const sliderImages = [
     '/images/slider-image1.jpg',
     '/images/slider-image2.jpg',
     '/images/slider-image3.jpg',
+  ];
+  
+  // 施設情報を配列で管理
+  const facilities: Facility[] = [
+    {
+      title: "宿泊施設",
+      description: "イーストロッジ・ウェストロッジを備えた寛ぎの空間",
+      image: "/images/src/slider-image1.jpg",
+      path: "/lodging"
+    },
+    {
+      title: "ドッグラン＆カフェ",
+      description: "愛犬と一緒に楽しめる専用施設",
+      image: "/images/src/slider-image2.jpg",
+      path: "/dog-run"
+    },
+    {
+      title: "イベントホール",
+      description: "結婚式、同窓会など特別な集いの場",
+      image: "/images/src/slider-image3.jpg",
+      path: "/wedding"
+    },
+    {
+      title: "アウトドアダイニング",
+      description: "自然の中で楽しむ開放的なお食事体験",
+      image: "/images/src/slider-image1.jpg",
+      path: "/food-club"
+    },
+    {
+      title: "インドアレストラン",
+      description: "上質な空間で味わう厳選料理",
+      image: "/images/src/slider-image2.jpg",
+      path: "/food-club"
+    },
+    {
+      title: "オープンガーデン",
+      description: "四季折々の花々に囲まれた癒しの空間",
+      image: "/images/src/slider-image3.jpg",
+      path: "/facilities"
+    }
   ];
 
   return (
@@ -30,12 +78,12 @@ const HomePage: React.FC = () => {
         {/* コンテンツ - 左下寄せ */}
         <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-serif text-gray-50 mb-8 leading-tight">
-              心安らぐ贅沢な時間
+            <h1 className="font-serif text-gray-50 mb-8 leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}>
+              美しい自然、おいしい食事
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-12 max-w-xl">
-              標高1,000mの中央アルプス山麓に佇む隠れ家。
-              清らかな空気と星空、山々の恵みを感じる静寂の中で、
+            <p className="text-gray-200 mb-12 max-w-xl" style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}>
+              標高1,000mの中央アルプス山麓に佇む隠れ家。<br />
+              清らかな空気と星空、山々の恵みを感じる静寂の中で、<br />
               本来の自分を取り戻す贅沢なひとときをお過ごしください。
             </p>
             <div className="text-sm text-gray-300">
@@ -48,59 +96,61 @@ const HomePage: React.FC = () => {
       {/* コンセプト - 背景色をより暗く */}
       <section className="py-24 md:py-32 bg-[#0a1a0d] text-gray-100">
         <div className="container mx-auto px-6">
-          <div className="mb-12 md:w-1/2">
-            <p className="text-sm md:text-base text-gray-300/70 mb-2 tracking-wider">コンセプト</p>
-            <h2 className="text-3xl md:text-5xl font-serif mb-8 text-gray-50 leading-relaxed tracking-wider">
-              大切な人と紡ぐ<br />かけがえのない時間
-            </h2>
-            
-            <div className="space-y-6 text-gray-200 leading-relaxed max-w-3xl">
-              <p className="text-base md:text-lg">
-                忙しい日常から離れ、ゆったりと流れる時間の中で。
-              </p>
-              
-              <p className="text-base md:text-lg">
-                私たちが大切にしているのは、訪れる方々が
-                本当の自分に還る体験です。四季折々の自然と
-                山里の暮らしに触れながら、心と体が喜ぶ食事と
-                おもてなしで満たされる時間。そして何より
-                大切な人との絆を深める、かけがえのない記憶。
-              </p>
-              
-              <p className="text-base md:text-lg">
-                山荘ミルクは、そんな特別な時間が流れる場所です。
-              </p>
+          <div className="relative">
+            {/* 右上に浮かぶ写真 - スマホでは非表示、タブレット以上で表示 */}
+            <div className="hidden md:block absolute overflow-hidden shadow-xl z-10" 
+                 style={{
+                   aspectRatio: "4/3",
+                   width: "45vw",
+                   right: "0%",
+                   top: 0
+                 }}>
+              <div className="h-full w-full bg-center bg-cover" 
+                  style={{backgroundImage: "url('/images/slider-image1.jpg')"}}></div>
             </div>
-          </div>
-          
-          {/* コンセプトの画像 - より動的なレイアウト */}
-          <div className="mt-12 relative">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-              <div className="md:col-span-5 md:row-span-2 overflow-hidden transform md:translate-y-12">
-                <div className="h-64 md:h-full bg-[#0a150c] overflow-hidden shadow-xl">
-                  <div className="h-full w-full bg-center bg-cover" 
-                       style={{backgroundImage: "url('/images/src/slider-image1.jpg')"}}></div>
-                </div>
-              </div>
+            
+            <div className="mb-12 md:w-3/4 lg:w-2/3">
+              <p className="text-gray-300/70 mb-2 tracking-wider" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>
+                コンセプト
+              </p>
+              <h2 className="font-serif mb-6 md:mb-8 text-gray-50 leading-relaxed tracking-wider" style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}>
+                満たされていく 心と体
+              </h2>
               
-              <div className="md:col-span-4 md:col-start-6 overflow-hidden">
-                <div className="h-64 bg-[#0a150c] overflow-hidden shadow-xl">
-                  <div className="h-full w-full bg-center bg-cover" 
-                       style={{backgroundImage: "url('/images/src/slider-image2.jpg')"}}></div>
+              <div className="text-gray-200 leading-relaxed max-w-3xl">
+                <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
+                  日常を離れて、深呼吸したくなるような時間の中へ。
+                </p>
+                
+                <p style={{ 
+                    fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                    lineHeight: '1.8'
+                  }}>
+                  四季のうつろいに触れ、山里の暮らしに包まれながら、<br />
+                  心と体が喜ぶ食事と、あたたかなもてなしを味わうひととき<br />
+                  そんな時間の中で、ふと本来の自分を取り戻していく——<br />
+                  何気ない瞬間が、少しずつ、心をほどいてくれるのです
+                </p>
+                
+                <div className="relative pt-4">
+                  <p style={{ 
+                      fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                      maxWidth: '100%'
+                    }}>
+                    山荘ミルクは、そんな特別な時間が流れる場所です。
+                  </p>
                 </div>
-              </div>
-              
-              <div className="md:col-span-3 md:col-start-10 overflow-hidden">
-                <div className="h-64 bg-[#0a150c] overflow-hidden shadow-xl">
-                  <div className="h-full w-full bg-center bg-cover" 
-                       style={{backgroundImage: "url('/images/src/slider-image3.jpg')"}}></div>
-                </div>
-              </div>
-              
-              <div className="hidden md:block md:col-span-7 md:col-start-6 md:row-start-2 overflow-hidden">
-                <div className="h-64 bg-[#0a150c] overflow-hidden shadow-xl">
-                  <div className="h-full w-full bg-center bg-cover" 
-                       style={{backgroundImage: "url('/images/src/slider-image1.jpg')"}}></div>
+                
+                {/* 左下に浮かぶ写真 - レスポンシブ対応 */}
+                <div className="relative" style={{ marginTop: '5vw' }}>
+                  <div className="block overflow-hidden shadow-xl z-10" 
+                       style={{
+                         aspectRatio: "4/3",
+                         width: "max(35vw, 320px)", // 最小サイズを320pxに固定
+                       }}>
+                    <div className="h-full w-full bg-center bg-cover" 
+                        style={{backgroundImage: "url('/images/slider-image2.jpg')"}}></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,57 +158,66 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 部屋 - より動的な画像レイアウト */}
+      {/* 施設 - グリッドレイアウトで施設概要を表示 */}
       <section className="py-24 md:py-32 bg-[#0a150c] text-gray-100">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-12">
-            <div className="md:w-2/5">
-              <p className="text-sm md:text-base text-gray-300/70 mb-2 tracking-wider">部屋</p>
-              <h2 className="text-3xl md:text-5xl font-serif mb-8 text-gray-50 leading-relaxed tracking-wider">
-                くつろぎと<br />安らぎの<br />客室
-              </h2>
-              
-              <div className="space-y-6 text-gray-200 leading-relaxed">
-                <p className="text-base md:text-lg">
-                  中央アルプスの雄大な景色を望む客室は、木のぬくもりと自然素材にこだわりました。心が落ち着く空間で、日常を忘れてゆったりとした時間をお過ごしいただけます。
-                </p>
-                
-                <p className="text-base md:text-lg">
-                  全室に中央アルプスの清浄な空気と美しい眺望をご用意。静寂に包まれた夜には、満天の星空をお楽しみいただけます。
-                </p>
-              </div>
-              
-              <div className="mt-8">
-                <Link
-                  to="/lodging"
-                  className="inline-flex items-center font-medium text-[#d4b896] hover:text-[#e5ceaf] transition-colors"
-                >
-                  <span>客室の詳細を見る</span>
-                  <svg className="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
+          <div className="mb-16 md:w-3/5 md:ml-12 lg:ml-24">
+            <p className="text-gray-300/70 mb-2 tracking-wider" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>施設案内</p>
+            <h2 className="font-serif mb-8 text-gray-50 leading-relaxed tracking-wider" style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}>
+              心地よい時間を彩る<br />多彩な施設
+            </h2>
+            
+            <div className="space-y-6 text-gray-200 leading-relaxed max-w-xl">
+              <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
+                山荘ミルクでは、自然と調和した様々な施設で、
+                お客様それぞれの理想的な過ごし方を叶えます。
+                中央アルプスの麓で、新たな時間の流れを体験してください。
+              </p>
+            </div>
+          </div>
+          
+          {/* 施設データを配列で管理 */}
+          {/* モバイルとタブレットでは横スクロール、大画面ではグリッドレイアウト */}
+          <div className="lg:grid lg:grid-cols-3 lg:gap-8 flex overflow-x-auto pb-4 gap-4 snap-x" 
+               style={{ 
+                 scrollbarWidth: 'none', /* Firefox */
+                 msOverflowStyle: 'none', /* IE and Edge */
+                 WebkitOverflowScrolling: 'touch',
+               }}>
+            {/* スクロールバー非表示のためのスタイル - Webkit (Chrome, Safari) */}
+            <style dangerouslySetInnerHTML={{__html: `
+              div.overflow-x-auto::-webkit-scrollbar {
+                display: none;
+              }
+            `}} />
+            {facilities.map((facility, index) => (
+              <div 
+                key={index}
+                className="group relative rounded-none shadow-xl bg-[#0d1b10] hover:bg-[#132315] transition-all duration-300 flex-shrink-0 w-[85%] sm:w-[45%] md:w-[47%] lg:w-full snap-start"
+              >
+                <Link to={facility.path} className="block">
+                  <div 
+                    className="h-64 w-full overflow-hidden"
+                  >
+                    <div 
+                      className="h-full w-full bg-center bg-cover transition-transform duration-500 group-hover:scale-105" 
+                      style={{backgroundImage: `url('${facility.image}')`}}
+                    ></div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70"></div>
+                  <div className="absolute bottom-0 left-0 p-6 z-10">
+                    <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{facility.title}</h3>
+                    <p className="text-sm text-gray-300 mb-4">{facility.description}</p>
+                    <span className="inline-flex items-center text-[#d4b896] text-sm font-medium">
+                      詳細を見る
+                      <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  </div>
                 </Link>
               </div>
-            </div>
-            
-            {/* 部屋の画像 - ダイナミックレイアウト */}
-            <div className="md:w-3/5 grid grid-cols-12 gap-3">
-              <div className="col-span-12 relative overflow-hidden shadow-2xl">
-                <div className="h-80 w-full bg-center bg-cover" 
-                    style={{backgroundImage: "url('/images/src/slider-image2.jpg')"}}></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              </div>
-              
-              <div className="col-span-7 relative mt-3 overflow-hidden shadow-xl">
-                <div className="h-56 w-full bg-center bg-cover" 
-                    style={{backgroundImage: "url('/images/src/slider-image3.jpg')"}}></div>
-              </div>
-              
-              <div className="col-span-5 relative mt-3 overflow-hidden shadow-xl">
-                <div className="h-56 w-full bg-center bg-cover" 
-                    style={{backgroundImage: "url('/images/src/slider-image1.jpg')"}}></div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -169,34 +228,46 @@ const HomePage: React.FC = () => {
           <div className="flex flex-col-reverse md:flex-row gap-12">
             {/* 食事の画像 - オーバーラップレイアウト */}
             <div className="md:w-1/2 relative">
-              <div className="relative z-10 md:absolute md:top-12 md:left-0 md:w-4/5 overflow-hidden shadow-xl">
-                <div className="h-64 w-full bg-center bg-cover" 
+              <div className="relative z-10 md:absolute md:top-12 md:left-0 overflow-hidden shadow-xl"
+                   style={{ 
+                     aspectRatio: "4/3",
+                     width: "clamp(90%, 80% + 5vw, 75%)" 
+                   }}>
+                <div className="h-full w-full bg-center bg-cover" 
                     style={{backgroundImage: "url('/images/src/slider-image1.jpg')"}}></div>
               </div>
               
-              <div className="hidden md:block md:absolute md:top-32 md:right-0 md:w-1/2 overflow-hidden shadow-2xl">
-                <div className="h-80 w-full bg-center bg-cover" 
+              <div className="hidden md:block md:absolute md:top-32 md:right-0 overflow-hidden shadow-2xl"
+                   style={{ 
+                     aspectRatio: "3/4",
+                     width: "clamp(40%, 45% + 3vw, 50%)" 
+                   }}>
+                <div className="h-full w-full bg-center bg-cover" 
                     style={{backgroundImage: "url('/images/src/slider-image2.jpg')"}}></div>
               </div>
               
-              <div className="relative z-[5] mt-4 md:absolute md:bottom-0 md:left-1/4 md:w-2/3 overflow-hidden shadow-xl">
-                <div className="h-64 w-full bg-center bg-cover" 
+              <div className="relative z-[5] mt-4 md:absolute md:bottom-0 md:left-1/4 overflow-hidden shadow-xl"
+                   style={{ 
+                     aspectRatio: "4/3",
+                     width: "clamp(60%, 65% - 2vw, 70%)" 
+                   }}>
+                <div className="h-full w-full bg-center bg-cover" 
                     style={{backgroundImage: "url('/images/src/slider-image3.jpg')"}}></div>
               </div>
             </div>
             
             <div className="md:w-1/2">
-              <p className="text-sm md:text-base text-gray-300/70 mb-2 tracking-wider">食事</p>
-              <h2 className="text-3xl md:text-5xl font-serif mb-8 text-gray-50 leading-relaxed tracking-wider">
+              <p className="text-gray-300/70 mb-2 tracking-wider" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>食事</p>
+              <h2 className="font-serif mb-8 text-gray-50 leading-relaxed tracking-wider" style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}>
                 身体と心が喜ぶ<br />健康的な美食
               </h2>
               
               <div className="space-y-6 text-gray-200 leading-relaxed">
-                <p className="text-base md:text-lg">
+                <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
                   無農薬・有機栽培の食材を使用した健康的なお料理は、体にやさしく本物の味わいを堪能できます。中央アルプスの伏流水を使ったお料理は格別な味わいです。
                 </p>
                 
-                <p className="text-base md:text-lg">
+                <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
                   自家製天然酵母パンや、丁寧に水出ししたコーヒーなど、素材と時間にこだわった料理の数々をお楽しみください。
                 </p>
               </div>
@@ -221,10 +292,10 @@ const HomePage: React.FC = () => {
       <section className="py-16 md:py-20 bg-[#0a150c] text-gray-100">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-50">
+            <h2 className="font-bold mb-6 text-gray-50" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
               特別な時間をお過ごしください
             </h2>
-            <p className="text-lg mb-10 text-gray-200">
+            <p className="mb-10 text-gray-200" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}>
               ご予約・お問い合わせはこちらから。<br />
               皆様のお越しを心よりお待ちしております。
             </p>
