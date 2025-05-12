@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import type { ImageSliderProps } from '../types/imageSliderTypes';
 import useImageSliderAnimation from '../hooks/useImageSliderAnimation';
 import useImageSliderNavigation from '../hooks/useImageSliderNavigation';
 import { SLIDER_TIMING } from './ImageSlider/ImageSliderConstants';
-import DebugOverlay from './ImageSlider/DebugOverlay';
 
 /**
  * イメージスライダーコンポーネント
@@ -22,20 +21,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   showArrows = true,
   showIndicators = true,
   className = '',
-  debug = false,
+  backgroundColor = 'transparent',
 }) => {
   // SLIDER_TIMINGからアニメーションのタイミング設定を取得
   const TIMING = SLIDER_TIMING;
-
-  // デバッグ用のタイマー状態
-  const [elapsedTime, setElapsedTime] = useState<number>(0);
-  const [cycleProgress, setCycleProgress] = useState<number>(0);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
-
-  // Per-image animation start times
-  const imageFadeStartTimes = useRef<Record<number, number>>({});
-  const imageZoomStartTimes = useRef<Record<number, number>>({});
 
   // カスタムフックを使用
   const {
@@ -44,7 +33,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     startZoomAnimation,
     animateOpacity,
     resetOpacity
-  } = useImageSliderAnimation({ images, timing: TIMING, debug });
+  } = useImageSliderAnimation({ images, timing: TIMING });
   
   const {
     currentImageIndex,
@@ -55,7 +44,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     isTransitioning,
     pauseAutoPlay,
     resumeAutoPlay
-  } = useImageSliderNavigation({ images, timing: TIMING, debug, autoPlay });
+  } = useImageSliderNavigation({ images, timing: TIMING, autoPlay });
 
   // 画像名取得ヘルパー
   const getImageName = (index: number) => images[index]?.split('/').pop() || '';
@@ -70,74 +59,22 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     animateOpacity(0, 0);
     // 初期画像ズーム開始
     startZoomAnimation(0);
-    const now = Date.now();
-    imageFadeStartTimes.current[0] = now;
-    imageZoomStartTimes.current[0] = now;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 画像切り替え時: 新しい画像のズームを開始し、旧→新のフェード
   useEffect(() => {
     if (previousImageIndex === currentImageIndex) return;
-    const now = Date.now();
     // 新画像ズーム開始
     startZoomAnimation(currentImageIndex);
     // フェードアウト/イン
     animateOpacity(previousImageIndex, currentImageIndex);
-    // record per-image start times
-    imageFadeStartTimes.current[currentImageIndex] = now;
-    imageZoomStartTimes.current[currentImageIndex] = now;
-    // デバッグタイマーリセット
-    startTimeRef.current = Date.now();
-    setElapsedTime(0);
-    setCycleProgress(0);
   }, [currentImageIndex, previousImageIndex, startZoomAnimation, animateOpacity]);
-
-  // デバッグモードの場合、タイマーを更新
-  useEffect(() => {
-    if (debug) {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      
-      startTimeRef.current = Date.now();
-      
-      timerRef.current = setInterval(() => {
-        const now = Date.now();
-        const elapsed = now - startTimeRef.current;
-        setElapsedTime(elapsed);
-        setCycleProgress((elapsed % TIMING.TOTAL_DURATION) / TIMING.TOTAL_DURATION * 100);
-      }, 100); // 100msごとに更新
-      
-      return () => {
-        if (timerRef.current) {
-          clearInterval(timerRef.current);
-        }
-      };
-    }
-  }, [debug, currentImageIndex, TIMING.TOTAL_DURATION]);
-
-  // Compute debug data for all images
-  const nowAll = Date.now();
-  const debugData = images.map((_, idx) => {
-    const fadeStart = imageFadeStartTimes.current[idx];
-    // time since fade-in start, capped to TOTAL_DURATION
-    const elapsedMs = fadeStart != null ? Math.min(nowAll - fadeStart, TIMING.TOTAL_DURATION) : 0;
-    const time = elapsedMs / 1000;
-    const opacity = imageOpacityLevels[idx] ?? 0;
-    const zoom = imageZoomLevels[idx] ?? TIMING.ZOOM_START;
-    return {
-      index: idx,
-      name: getImageName(idx),
-      time,
-      opacity,
-      zoom
-    };
-  });
 
   return (
     <div
       className={`relative overflow-hidden w-full h-full ${className}`}
+      style={{ backgroundColor }}
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={resumeAutoPlay}
     >
@@ -202,9 +139,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           ))}
         </div>
       )}
-      
-      {/* デバッグオーバーレイコンポーネント */}
-      {debug && <DebugOverlay debugData={debugData} />}
     </div>
   );
 };

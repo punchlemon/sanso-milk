@@ -16,6 +16,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { useEffect } from 'react';
 
+// フォントに関する直接スタイルを追加
+import './custom-fonts.css';
+
 function App() {
   // ページ遷移時にスクロールをトップに戻す
   useEffect(() => {
@@ -29,7 +32,9 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen font-serif text-primary-dark bg-natural-light bg-paper-texture">
+      <div style={{ 
+        fontFamily: '"GEN EI Koburi Mincho", serif' 
+      }} className="flex flex-col min-h-screen text-primary-dark bg-natural-light bg-paper-texture relative">
         <div className="absolute top-0 left-0 w-full h-64 pointer-events-none z-0 overflow-hidden">
           <div className="absolute h-64 w-64 -top-20 -left-20 bg-primary opacity-[0.03] rounded-full"></div>
           <div className="absolute h-64 w-64 top-10 right-20 bg-accent opacity-[0.03] rounded-full"></div>

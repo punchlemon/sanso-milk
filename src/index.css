@@ -3,20 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* フォント変数の定義 */
+:root {
+  --font-geneikoburi: 'GEN EI Koburi Mincho', serif;
+}
+
 /* カスタムスタイルはlayerディレクティブ内に記述 */
 @layer base {
+  html, body {
+    font-family: var(--font-geneikoburi);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   /* ベーススタイルの上書き */
   body {
-    @apply text-gray-800 bg-natural-light min-h-screen;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    @apply text-gray-100 bg-[#111111] min-h-screen;
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold m-0;
+    @apply font-semibold m-0 text-primary-dark;
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
   }
 
   p {
-    @apply mb-4 last:mb-0;
+    @apply mb-4 last:mb-0 leading-relaxed;
   }
 
   button {
@@ -25,6 +37,12 @@
 
   :focus {
     @apply outline-2 outline-primary-light outline-offset-2;
+  }
+
+  /* 古民家風の装飾テキスト用のクラス */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
   }
 }
 
@@ -45,6 +63,29 @@
   }
 
   .section-title {
-    @apply text-3xl font-serif font-bold text-primary-dark mb-8 text-center;
+    @apply text-3xl font-bold text-primary-dark mb-8 text-center relative;
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
+  }
+
+  /* 古民家風の装飾タイトル */
+  .rustic-title {
+    @apply relative inline-block font-semibold;
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
+  }
+  
+  .rustic-title::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-accent-light opacity-70;
+  }
+
+  /* 温かみのある強調テキスト */
+  .warm-emphasis {
+    @apply text-accent-dark font-medium;
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
+  }
+
+  /* フォント用のユーティリティクラス */
+  .font-geneikoburi {
+    font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
   }
 }

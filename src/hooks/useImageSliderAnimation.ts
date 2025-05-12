@@ -106,8 +106,10 @@ const useImageSliderAnimation = ({
       const elapsed = now - state.startTime;
       
       // 全表示期間でズームアウトするよう計算
-      const progress = Math.min(elapsed / timing.TOTAL_DURATION, 1);
-      const zoomLevel = state.zoomStartValue - (progress * (state.zoomStartValue - state.zoomEndValue));
+      const progress = Math.min(elapsed / timing.ZOOM_DURATION, 1);
+      // apply ease-out quadratic easing for deceleration
+      const easedProgress = progress * (2 - progress);
+      const zoomLevel = state.zoomStartValue - (easedProgress * (state.zoomStartValue - state.zoomEndValue));
       
       setImageZoomLevels(prev => ({
         ...prev,
@@ -148,7 +150,7 @@ const useImageSliderAnimation = ({
         active: false
       };
     };
-  }, [timing.TOTAL_DURATION, timing.ZOOM_START, timing.ZOOM_END, debug]);
+  }, [timing.ZOOM_DURATION, timing.ZOOM_START, timing.ZOOM_END, debug]);
 
   /**
    * 不透明度のアニメーション（フェードイン/アウト）

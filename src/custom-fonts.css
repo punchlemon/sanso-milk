@@ -1,0 +1,62 @@
+/* 源暎こぶり明朝フォント設定 - TTFファイル対応 */
+@font-face {
+  font-family: 'GEN EI Koburi Mincho';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/GenEiKoburiMin6-R.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GEN EI Koburi Mincho';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/GenEiKoburiMin6-R.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GEN EI Koburi Mincho';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/GenEiKoburiMin6-R.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GEN EI Koburi Mincho';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/GenEiKoburiMin6-R.ttf') format('truetype');
+}
+
+/* フォントの直接適用 */
+html {
+  font-family: 'GEN EI Koburi Mincho', serif;
+}
+
+body {
+  font-family: 'GEN EI Koburi Mincho', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'GEN EI Koburi Mincho', serif;
+  font-weight: 500;
+}
+
+/* タイトル用の装飾クラス */
+.title-mincho {
+  font-family: 'GEN EI Koburi Mincho', serif !important;
+}
+
+.text-maru {
+  font-family: 'GEN EI Koburi Mincho', serif !important;
+}
+
+/* ユーティリティクラス */
+.font-geneikoburi {
+  font-family: 'GEN EI Koburi Mincho', serif !important;
+}

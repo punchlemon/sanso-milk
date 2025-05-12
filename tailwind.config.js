@@ -25,8 +25,13 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Noto Sans JP"', 'sans-serif'],
-        serif: ['"Noto Serif JP"', 'serif'],
+        // 源暎こぶり明朝をデフォルトフォントとして設定
+        sans: ['"GEN EI Koburi Mincho"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        serif: ['"GEN EI Koburi Mincho"', 'Georgia', '"Times New Roman"', 'serif'],
+        mincho: ['"GEN EI Koburi Mincho"', 'serif'],
+        maru: ['"GEN EI Koburi Mincho"', 'serif'],
+        // 源暎こぶり明朝専用クラス
+        geneikoburi: ['"GEN EI Koburi Mincho"', 'serif'],
       },
       boxShadow: {
         'natural': '0 4px 14px -2px rgba(96, 92, 78, 0.1)',
