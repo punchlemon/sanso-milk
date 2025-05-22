@@ -5,7 +5,7 @@ import { DARK_SECTION, FONTS } from '../constants/theme';
 
 const Footer: React.FC = () => {
   return (
-    <footer className={`${DARK_SECTION.BG.PRIMARY} ${DARK_SECTION.TEXT.SLIGHT_MUTED} border-t border-primary-light`}>
+    <footer className={`${DARK_SECTION.BG.PRIMARY} ${DARK_SECTION.TEXT.SLIGHT_MUTED} border-t border-primary-light relative z-20`} style={{ backgroundColor: '#000' }}>
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="md:w-1/3">

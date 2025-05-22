@@ -1,268 +1,198 @@
 import React from 'react';
+import { FONTS, getSectionColors, getSectionStyles } from '../constants/theme';
+import GoogleMap from '../components/access/GoogleMap';
 
 const AccessPage: React.FC = () => {
+  // セクションごとのカラーとスタイルを取得
+  const accessColors = getSectionColors('light');
+  const heroColors = getSectionColors('dark'); // ヒーローセクション用に追加
+  const accessStyles = getSectionStyles('light');
+
   return (
-    <div className="min-h-screen">
-      {/* ヒーローセクション */}
-      <div
-        className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: 'url("/images/access-hero.jpg")' }}
-      >
-        <div className="text-center text-white z-10 px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">
-            アクセス情報
-          </h1>
-          <p className="text-lg md:text-xl">山の民宿「木香」へのご案内</p>
+    <div>
+      {/* 固定背景画像 - position: fixed で固定、z-indexを最背面に */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/images/access/car_window.jpg")',
+          zIndex: -10 // より低いz-indexで確実に背後に表示
+        }}
+      />
+      
+      {/* コンテンツ - フッターを見えるようにするために通常のフロー内に配置 */}
+      <div className="relative z-1 pb-0">
+        {/* ヒーローセクション - HomePageと同様のスタイリング */}
+        <section className={`relative h-screen w-full flex items-center justify-center overflow-hidden`}>
+          
+          {/* コンテンツ */}
+          <div className="container mx-auto px-6 py-20 relative z-10 text-center">
+            <div className="mx-auto max-w-3xl">
+              <h1 className={`${FONTS.SERIF} ${heroColors.TEXT.DEFAULT} mb-8 leading-tight`} 
+                  style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}>
+                アクセス
+              </h1>
+              <p className={`${heroColors.TEXT.SEMI_MUTED} mb-12 max-w-xl mx-auto`} 
+                style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}>
+                山荘ミルクへのご案内
+              </p>
+              <div className={`text-sm ${heroColors.TEXT.MUTED}`}>
+                自然に囲まれた静寂の中で、特別なひとときを
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* コンテンツセクション */}
+        <div className="w-full">
+          {/* 地図と基本情報セクション */}
+          <section className="py-16 bg-white bg-opacity-90">
+            <div className="container mx-auto px-4">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-2/3 h-64 md:h-auto">
+                    <GoogleMap />
+                  </div>
+                  <div className={`md:w-1/3 p-6 ${accessColors.BG.PRIMARY}`}>
+                    <h2 className={`text-2xl font-bold mb-3 ${accessColors.TEXT.DEFAULT}`}>
+                      山荘ミルク
+                    </h2>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className={`font-bold ${accessColors.TEXT.DEFAULT} mb-1`}>住所</h3>
+                        <p className={accessColors.TEXT.SEMI_MUTED}>
+                          〒396-0029<br />
+                          長野県伊那市横山風の谷9749
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className={`font-bold ${accessColors.TEXT.DEFAULT} mb-1`}>電話番号</h3>
+                        <p className={accessColors.TEXT.SEMI_MUTED}>0265-72-9990</p>
+                      </div>
+                      <div>
+                        <h3 className={`font-bold ${accessColors.TEXT.DEFAULT} mb-1`}>FAX番号</h3>
+                        <p className={accessColors.TEXT.SEMI_MUTED}>0265-72-7299</p>
+                      </div>
+                      <div>
+                        <h3 className={`font-bold ${accessColors.TEXT.DEFAULT} mb-1`}>営業時間</h3>
+                        <p className={accessColors.TEXT.SEMI_MUTED}>
+                          11:00～17:00<br />
+                          <span className="text-sm">(夜はご予約のみの営業となります)</span>
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className={`font-bold ${accessColors.TEXT.DEFAULT} mb-1`}>定休日</h3>
+                        <p className={accessColors.TEXT.SEMI_MUTED}>
+                          毎週 月曜日・火曜日<br />
+                          <span className="text-sm">(薔薇の季節の6月は月曜日・火曜日も営業 11:00～15:00)</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 交通案内セクション */}
+          <section className="py-16 bg-white bg-opacity-90">
+            <div className="container mx-auto px-4">
+              <h2 className={`${FONTS.SERIF} text-3xl font-bold mb-12 text-center ${accessColors.TEXT.DEFAULT}`}>
+                交通案内
+              </h2>
+
+              {/* アクセスマップ画像 */}
+              <div className="max-w-4xl mx-auto mb-12">
+                <img 
+                  src="/images/access-map.jpg" 
+                  alt="アクセスマップ" 
+                  className="w-full h-auto rounded-lg shadow-md" 
+                />
+              </div>
+
+              {/* 各種交通手段の情報 */}
+              <div className="max-w-4xl mx-auto">
+                <div className="grid gap-8">
+                  {/* 車でのアクセス */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                      <span className="mr-3">🚗</span>お車の場合
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道小黒川スマートインターから</div>
+                        <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>約10分</div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道伊那ICから</div>
+                        <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>約20分</div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道駒ヶ根ICから</div>
+                        <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>〇〇分</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 電車でのアクセス（東京方面） */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                      <span className="mr-3">🚄</span>電車の場合（東京方面から）
+                    </h3>
+                    <div>
+                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・岡谷乗換・飯田線伊那市駅下車【約3時間30分】</p>
+                    </div>
+                  </div>
+
+                  {/* 電車でのアクセス（名古屋方面） */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                      <span className="mr-3">🚄</span>電車の場合（名古屋方面から）
+                    </h3>
+                    <div>
+                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・塩尻乗換・飯田線伊那市駅下車【約3時間30分】</p>
+                    </div>
+                  </div>
+
+                  {/* 高速バスでのアクセス（東京方面） */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                      <span className="mr-3">🚌</span>高速バスの場合（東京方面から）
+                    </h3>
+                    <div>
+                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（新宿）・伊那市下車【約3時間30分】</p>
+                    </div>
+                  </div>
+
+                  {/* 高速バスでのアクセス（名古屋方面） */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                      <span className="mr-3">🚌</span>高速バスの場合（名古屋方面から）
+                    </h3>
+                    <div>
+                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（名鉄バスセンター）・伊那市下車【約3時間30分】</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 text-center">
+                  <p className={`${accessColors.TEXT.MUTED} italic`}>
+                    宿泊の場合は伊那市駅または伊那市バス停までお迎えに伺います。事前にお問い合わせください。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* フッターの前に不透明な背景のセクションを追加 */}
+          <section className={`py-8 ${accessColors.BG.PRIMARY}`}>
+            <div className="container mx-auto px-4">
+              <div className={`border-t border-primary/20 pt-8 text-center ${accessColors.TEXT.MUTED}`}>
+                <p>詳細なアクセス情報については、お気軽にお問い合わせください。</p>
+              </div>
+            </div>
+          </section>
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
-
-      {/* 地図セクション */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              <div className="md:w-2/3 h-64 md:h-auto bg-gray-200 flex items-center justify-center">
-                {/* 実際の地図埋め込みに差し替え */}
-                <span className="text-gray-500">Googleマップ表示エリア</span>
-              </div>
-              <div className="md:w-1/3 p-6 bg-natural-light">
-                <h2 className="text-2xl font-bold mb-3 text-primary-dark">
-                  山の民宿「木香」
-                </h2>
-                <p className="text-gray-700 mb-4">
-                  〒XXX-XXXX
-                  <br />
-                  〇〇県〇〇市〇〇町山路123-45
-                </p>
-                <div className="space-y-2">
-                  <p className="text-gray-700">
-                    <span className="font-bold">電話：</span> 0X0-XXXX-XXXX
-                  </p>
-                  <p className="text-gray-700">
-                    <span className="font-bold">メール：</span>{' '}
-                    info@yamaminshuku.jp
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 交通手段セクション */}
-      <section className="py-16 bg-natural-light">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-10 text-primary-dark text-center">
-            交通手段
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-4 text-accent">🚗</div>
-              <h3 className="text-xl font-bold mb-4 text-primary-dark">
-                お車でお越しの場合
-              </h3>
-              <ul className="list-disc pl-5 mb-4 space-y-2 text-gray-700">
-                <li>〇〇自動車道「〇〇IC」から約40分</li>
-                <li>〇〇自動車道「××IC」から約50分</li>
-                <li>※カーナビには「山の民宿 木香」とご入力ください</li>
-                <li>
-                  ※最後の5kmは山道となります。冬季は積雪の可能性がありますので、チェーンのご準備をお勧めします
-                </li>
-              </ul>
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-gray-700">
-                  <span className="font-bold">駐車場：</span> 15台（無料）
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-4 text-accent">🚅</div>
-              <h3 className="text-xl font-bold mb-4 text-primary-dark">
-                電車・バスでお越しの場合
-              </h3>
-              <ul className="list-disc pl-5 mb-4 space-y-2 text-gray-700">
-                <li>
-                  JR〇〇線「〇〇駅」から路線バスで約30分、「〇〇バス停」下車後徒歩15分
-                </li>
-                <li>または「〇〇駅」からタクシーで約20分</li>
-                <li>
-                  ※事前にご連絡いただければ、〇〇駅または〇〇バス停まで送迎いたします（要予約）
-                </li>
-              </ul>
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-gray-700">
-                  <span className="font-bold">送迎サービス：</span>{' '}
-                  15:00〜17:00（要予約）
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 詳細マップセクション */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-10 text-primary-dark text-center">
-            周辺地図・アクセスマップ
-          </h2>
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2">
-              {/* 実際のアクセスマップ画像に差し替え */}
-              <div className="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-gray-500">アクセス詳細マップ</span>
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              <h3 className="text-xl font-bold mb-4 text-primary-dark">
-                ご案内
-              </h3>
-              <p className="mb-4 text-gray-700">
-                当館は山間部に位置しているため、スマートフォンの地図アプリでは正確な位置が表示されない場合がございます。
-                上記の地図を参考に、目印となる「〇〇神社」を過ぎて約500m先の山道を登った場所にございます。
-              </p>
-              <p className="text-gray-700">
-                初めてお越しのお客様は、事前にお電話でご連絡いただければ詳しくご案内させていただきます。
-                また、天候によっては道路状況が変わることもございますので、お越しの際はお気をつけてお越しください。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 周辺観光情報セクション */}
-      <section className="py-16 bg-natural-light">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-10 text-primary-dark text-center">
-            周辺観光情報
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-1">
-              <h3 className="text-xl font-bold mb-4 text-primary-dark">
-                観光スポット
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="font-medium text-gray-700">〇〇滝</span>
-                  <span className="text-sm bg-natural px-2 py-1 rounded">
-                    車で15分
-                  </span>
-                </li>
-                <li className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="font-medium text-gray-700">△△温泉</span>
-                  <span className="text-sm bg-natural px-2 py-1 rounded">
-                    車で20分
-                  </span>
-                </li>
-                <li className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="font-medium text-gray-700">××高原</span>
-                  <span className="text-sm bg-natural px-2 py-1 rounded">
-                    車で30分
-                  </span>
-                </li>
-                <li className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="font-medium text-gray-700">□□神社</span>
-                  <span className="text-sm bg-natural px-2 py-1 rounded">
-                    徒歩30分
-                  </span>
-                </li>
-                <li className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="font-medium text-gray-700">◇◇美術館</span>
-                  <span className="text-sm bg-natural px-2 py-1 rounded">
-                    車で40分
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-2">
-              <div className="grid grid-cols-3 gap-4">
-                <div className="text-center">
-                  <div className="bg-gray-200 h-40 rounded-lg flex items-center justify-center shadow-md mb-2">
-                    <span className="text-gray-500 text-sm">滝の写真</span>
-                  </div>
-                  <p className="text-gray-700 text-sm">〇〇滝</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-gray-200 h-40 rounded-lg flex items-center justify-center shadow-md mb-2">
-                    <span className="text-gray-500 text-sm">温泉の写真</span>
-                  </div>
-                  <p className="text-gray-700 text-sm">△△温泉</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-gray-200 h-40 rounded-lg flex items-center justify-center shadow-md mb-2">
-                    <span className="text-gray-500 text-sm">高原の写真</span>
-                  </div>
-                  <p className="text-gray-700 text-sm">××高原</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 宿泊案内セクション */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="bg-primary-light bg-opacity-20 p-6 rounded-lg shadow-md max-w-3xl mx-auto">
-            <h3 className="text-xl font-bold mb-4 text-primary-dark">
-              ご宿泊のお客様へのご案内
-            </h3>
-            <div className="space-y-4 text-gray-700">
-              <p>
-                <span className="font-bold">チェックイン：</span> 15:00〜18:00
-                <br />
-                <span className="font-bold">チェックアウト：</span> 10:00
-              </p>
-              <p>
-                チェックインが18:00を過ぎる場合は、必ず事前にご連絡ください。
-                また、天候や道路状況により到着が遅れる場合も、お電話にてお知らせいただければ幸いです。
-              </p>
-              <p>
-                最寄りのコンビニエンスストアやスーパーマーケットは車で約15分の場所にありますので、
-                必要なものは事前にお買い求めいただくことをおすすめします。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* お問い合わせセクション */}
-      <section className="py-16 bg-natural-light">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-6 text-primary-dark text-center">
-            お問い合わせ
-          </h2>
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <p className="text-gray-700">
-                ご不明な点やご質問がございましたら、お電話またはメールにてお気軽にお問い合わせください。
-                送迎のご予約や特別なご要望なども承っております。
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                <h3 className="text-xl font-bold mb-3 text-primary-dark">
-                  お電話
-                </h3>
-                <p className="text-lg font-semibold mb-1">0X0-XXXX-XXXX</p>
-                <p className="text-gray-600 text-sm">(受付時間：9:00〜18:00)</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                <h3 className="text-xl font-bold mb-3 text-primary-dark">
-                  メール
-                </h3>
-                <p className="text-lg font-semibold mb-1">
-                  info@yamaminshuku.jp
-                </p>
-                <p className="text-gray-600 text-sm">(24時間受付)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
