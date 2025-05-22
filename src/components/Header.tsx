@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectCartItemCount } from '../store/slices/cartSlice';
 import logoImage from '../assets/logo/logo.svg';
+import { DARK_SECTION, FONTS } from '../constants/theme';
 
 // メニュー項目のタイプ定義
 interface MenuItem {
@@ -41,16 +42,6 @@ const Header: React.FC = () => {
       id: 'home',
       label: 'ホーム',
       path: '/',
-    },
-    {
-      id: 'about',
-      label: '施設について',
-      path: '/about',
-    },
-    {
-      id: 'facilities',
-      label: '施設案内',
-      path: '/facilities',
     },
     {
       id: 'lodging',
@@ -106,45 +97,36 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // より暗い森林緑色パレット（ほとんど黒い緑）
-  const colors = {
-    primary: '#0f1f13',    // 非常に暗い森林緑
-    secondary: '#1b3a23',  // 暗い森林緑
-    accent: '#725e46',     // 自然な茶色（アクセント）
-    hover: '#162c1b',      // ホバー時の暗い森林緑
-    text: '#f0f0f0',       // テキストカラー（薄い）
-    textMuted: '#d0d0d0',  // 薄いグレー（ミュートテキスト）
-    bgLight: '#f9f7f4'     // 薄い背景色
-  };
-
   return (
     <>
       {/* 右上の固定メニューボタン - スクロールしても維持 */}
       <div className="fixed top-4 right-4 z-[60]">
         <button
-          className={`${isScrolled ? 'bg-black/60' : 'bg-black/30'} hover:bg-black/70 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-300`}
+          className={`${isScrolled ? DARK_SECTION.OVERLAY.DARK : DARK_SECTION.OVERLAY.LIGHT} hover:bg-black/70 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-300`}
           onClick={toggleMenu}
           aria-label="メニュー"
         >
           <div className={`flex flex-col gap-1.5 ${isMenuOpen ? 'relative' : ''}`}>
-            <span className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? 'rotate-45 absolute' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? '-rotate-45 absolute' : ''}`}></span>
+            <span className={`block w-6 h-0.5 ${DARK_SECTION.TEXT.DEFAULT} transition-all ${isMenuOpen ? 'rotate-45 absolute' : ''}`}></span>
+            <span className={`block w-6 h-0.5 ${DARK_SECTION.TEXT.DEFAULT} transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 ${DARK_SECTION.TEXT.DEFAULT} transition-all ${isMenuOpen ? '-rotate-45 absolute' : ''}`}></span>
           </div>
         </button>
       </div>
 
       {/* メニューオーバーレイ */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50" onClick={toggleMenu}>
-          <div className="absolute right-4 top-20 bg-black/90 rounded-md shadow-xl w-64" onClick={(e) => e.stopPropagation()}>
+        <div className={`fixed inset-0 ${DARK_SECTION.OVERLAY.DARK} backdrop-blur-md z-50`} onClick={toggleMenu}>
+          <div className={`absolute right-4 top-20 ${DARK_SECTION.BG.PRIMARY} bg-opacity-90 rounded-md shadow-xl w-64`} onClick={(e) => e.stopPropagation()}>
             <nav>
               <ul className="py-2">
                 {menuItems.map((item) => (
                   <li key={`overlay-${item.id}`}>
                     <Link
                       to={item.path}
-                      className={`block px-4 py-2 text-white hover:bg-gray-800 border-l-2 ${activeTab === item.id ? 'border-amber-700 bg-gray-900' : 'border-transparent'}`}
+                      className={`block px-4 py-2 ${DARK_SECTION.TEXT.DEFAULT} hover:${DARK_SECTION.BG.PRIMARY_LIGHT} border-l-2 ${
+                        activeTab === item.id ? `border-accent ${DARK_SECTION.BG.PRIMARY_DARK}` : 'border-transparent'
+                      }`}
                       onClick={() => {
                         setActiveTab(item.id);
                         setIsMenuOpen(false);
@@ -154,16 +136,16 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                 ))}
-                <li className="border-t border-gray-800 my-2"></li>
+                <li className={`border-t border-primary-light my-2`}></li>
                 <li>
                   <Link
                     to="/cart"
-                    className="flex items-center justify-between px-4 py-2 text-white hover:bg-gray-800"
+                    className={`flex items-center justify-between px-4 py-2 ${DARK_SECTION.TEXT.DEFAULT} hover:${DARK_SECTION.BG.PRIMARY_LIGHT}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span>カート</span>
                     {cartItemCount > 0 && (
-                      <span className="bg-amber-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      <span className={`${DARK_SECTION.ACCENT.BG} ${DARK_SECTION.TEXT.DEFAULT} text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center`}>
                         {cartItemCount}
                       </span>
                     )}
@@ -190,21 +172,21 @@ const Header: React.FC = () => {
 
             {/* デスクトップナビゲーション - ロゴと横並びのタブ形式（透明背景） */}
             <nav className="hidden md:flex flex-1 items-center justify-center">
-              <ul className="flex space-x-2">
+              <ul className={`flex space-x-2 ${FONTS.SERIF}`}>
                 {menuItems.map((item) => (
                   <li key={item.id} className="group relative">
                     <Link
                       to={item.path}
-                      className={`relative px-3 py-2 font-medium text-white/90 hover:text-white transition-colors`}
+                      className={`relative px-3 py-2 font-medium ${DARK_SECTION.TEXT.SLIGHT_MUTED} hover:${DARK_SECTION.TEXT.DEFAULT} transition-colors`}
                       onClick={() => setActiveTab(item.id)}
                     >
                       {item.label}
                       {/* アクティブ時に表示されるアンダーライン */}
                       {activeTab === item.id && (
-                        <span className="absolute left-0 bottom-0 w-full h-0.5 bg-amber-700"></span>
+                        <span className={`absolute left-0 bottom-0 w-full h-0.5 ${DARK_SECTION.ACCENT.BG}`}></span>
                       )}
                       {/* ホバー時に表示されるアンダーライン（アクティブでない場合のみ） */}
-                      <span className={`absolute left-0 bottom-0 w-full h-0.5 bg-amber-700 transform origin-left transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 ${
+                      <span className={`absolute left-0 bottom-0 w-full h-0.5 ${DARK_SECTION.ACCENT.BG} transform origin-left transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 ${
                         activeTab === item.id ? 'hidden' : ''
                       }`}></span>
                     </Link>
@@ -215,12 +197,12 @@ const Header: React.FC = () => {
 
             {/* カートリンク */}
             <div className="hidden md:block">
-              <Link to="/cart" className="relative p-2 text-white/90 hover:text-white transition-colors" aria-label="カートを見る">
+              <Link to="/cart" className={`relative p-2 ${DARK_SECTION.TEXT.SLIGHT_MUTED} hover:${DARK_SECTION.TEXT.DEFAULT} transition-colors`} aria-label="カートを見る">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 {cartItemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-amber-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className={`absolute -top-1 -right-1 ${DARK_SECTION.ACCENT.BG} ${DARK_SECTION.TEXT.DEFAULT} text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center`}>
                     {cartItemCount}
                   </span>
                 )}

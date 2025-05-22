@@ -1,7 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import FacilitiesPage from './pages/FacilitiesPage';
 import WeddingPage from './pages/WeddingPage';
 import AccessPage from './pages/AccessPage';
 import ProductsPage from './pages/ProductsPage';
@@ -19,19 +17,21 @@ import { useEffect } from 'react';
 // フォントに関する直接スタイルを追加
 import './custom-fonts.css';
 
-function App() {
-  // ページ遷移時にスクロールをトップに戻す
+// ScrollToTop component to handle scroll restoration
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
   useEffect(() => {
-    const handleNavigation = () => {
-      window.scrollTo(0, 0);
-    };
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
-    // ページ描画後に一度スクロールをトップに戻す
-    handleNavigation();
-  }, []);
-
+function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div style={{ 
         fontFamily: '"GEN EI Koburi Mincho", serif' 
       }} className="flex flex-col min-h-screen text-primary-dark bg-natural-light bg-paper-texture relative">
@@ -46,13 +46,11 @@ function App() {
           <Routes>
             {/* 基本情報カテゴリ */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/access" element={<AccessPage />} />
             <Route path="/monthly-schedule" element={<MonthlySchedulePage />} />
             <Route path="/contact" element={<ContactPage />} />
 
             {/* 施設・サービスカテゴリ */}
-            <Route path="/facilities" element={<FacilitiesPage />} />
             <Route path="/lodging" element={<LodgingPage />} />
             <Route path="/dogrun" element={<DogRunPage />} />
             <Route path="/wedding" element={<WeddingPage />} />

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../assets/logo/logo.svg';
+import { DARK_SECTION, FONTS } from '../constants/theme';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#1a2820] text-gray-200 border-t border-[#243128]">
+    <footer className={`${DARK_SECTION.BG.PRIMARY} ${DARK_SECTION.TEXT.SLIGHT_MUTED} border-t border-primary-light`}>
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="md:w-1/3">
@@ -14,9 +15,9 @@ const Footer: React.FC = () => {
                 alt="山荘ミルク ロゴ" 
                 className="w-8 h-8 mr-3"
               />
-              <span className="text-xl font-bold text-gray-100">山荘ミルク</span>
+              <span className={`text-xl font-bold ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>山荘ミルク</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} mb-6 leading-relaxed`}>
               標高およそ1,000mの中央アルプスの麓、
               <br />
               安全な食と健康を大切にする山荘です。
@@ -24,7 +25,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-400 hover:text-[#d4b896] transition-colors"
+                className={`${DARK_SECTION.TEXT.MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors`}
                 aria-label="Facebook"
               >
                 <svg
@@ -37,7 +38,7 @@ const Footer: React.FC = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-[#d4b896] transition-colors"
+                className={`${DARK_SECTION.TEXT.MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors`}
                 aria-label="Instagram"
               >
                 <svg
@@ -53,22 +54,14 @@ const Footer: React.FC = () => {
 
           <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-lg font-bold mb-4 border-l-4 border-[#8b6b4d] pl-3 text-gray-100">
+              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
                 施設案内
               </h3>
               <ul className="space-y-2 pl-3">
                 <li>
                   <Link
-                    to="/about"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
-                  >
-                    施設について
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     to="/lodging"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
+                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     宿泊施設
                   </Link>
@@ -76,7 +69,7 @@ const Footer: React.FC = () => {
                 <li>
                   <Link
                     to="/food-club"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
+                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     食の会
                   </Link>
@@ -85,10 +78,10 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4 border-l-4 border-[#8b6b4d] pl-3 text-gray-100">
+              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
                 アクセス
               </h3>
-              <address className="not-italic pl-3 text-gray-300 space-y-2">
+              <address className={`not-italic pl-3 ${DARK_SECTION.TEXT.SEMI_MUTED} space-y-2`}>
                 <p>長野県伊那市横山風の谷9749</p>
                 <p>Tel: 0X0-XXXX-XXXX</p>
                 <p className="break-all">Email: info@milk-co.jp</p>
@@ -96,14 +89,14 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4 border-l-4 border-[#8b6b4d] pl-3 text-gray-100">
+              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
                 リンク
               </h3>
               <ul className="space-y-2 pl-3">
                 <li>
                   <Link
                     to="/products"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
+                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     商品一覧
                   </Link>
@@ -111,7 +104,7 @@ const Footer: React.FC = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
+                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     お問い合わせ
                   </Link>
@@ -119,7 +112,7 @@ const Footer: React.FC = () => {
                 <li>
                   <Link
                     to="/access"
-                    className="text-gray-300 hover:text-[#d4b896] transition-colors block"
+                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     アクセス
                   </Link>
@@ -129,8 +122,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[#243128] text-center">
-          <div className="text-gray-400 text-sm">
+        <div className={`mt-10 pt-6 border-t border-primary-light text-center`}>
+          <div className={`${DARK_SECTION.TEXT.MUTED} text-sm`}>
             &copy; {new Date().getFullYear()} 山荘ミルク All rights reserved.
           </div>
         </div>

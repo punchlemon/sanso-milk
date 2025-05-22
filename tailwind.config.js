@@ -1,3 +1,19 @@
+const colors = require('tailwindcss/colors');
+const Color = require('color');
+
+/** 
+ * 色のバリエーションを自動生成する関数
+ * @param {string} baseColor - ベースカラー（HEXコード）
+ */
+function generateColorVariants(baseColor) {
+  const base = Color(baseColor);
+  return {
+    DEFAULT: baseColor,
+    light: base.lighten(0.2).hex(),
+    dark: base.darken(0.2).hex(),
+  };
+}
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,30 +23,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 山荘ミルクのブランドカラー - 自然派デザインに合わせてアースカラーを中心に再定義
-        primary: {
-          light: '#a7c4bc', // 明るいセージグリーン
-          DEFAULT: '#5f7161', // モスグリーン
-          dark: '#3c4b37', // 深い森のグリーン
-        },
-        accent: {
-          light: '#e9dccd', // クリーム色
-          DEFAULT: '#dda15e', // ハニーイエロー
-          dark: '#bc6c25', // アンバー
-        },
-        natural: {
-          light: '#f4f1ea', // オフホワイト
-          DEFAULT: '#e6e1d5', // ベージュ
-          dark: '#605c4e', // こげ茶
-        }
+        // ベースカラーだけを定義し、バリエーションは自動生成
+        primary: generateColorVariants('#15120d'),
+        accent: generateColorVariants('#391812'),
+        accent2: generateColorVariants('#967858'),
+        natural: generateColorVariants('#fff3d2'),
       },
       fontFamily: {
-        // 源暎こぶり明朝をデフォルトフォントとして設定
         sans: ['"GEN EI Koburi Mincho"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
         serif: ['"GEN EI Koburi Mincho"', 'Georgia', '"Times New Roman"', 'serif'],
         mincho: ['"GEN EI Koburi Mincho"', 'serif'],
         maru: ['"GEN EI Koburi Mincho"', 'serif'],
-        // 源暎こぶり明朝専用クラス
         geneikoburi: ['"GEN EI Koburi Mincho"', 'serif'],
       },
       boxShadow: {
