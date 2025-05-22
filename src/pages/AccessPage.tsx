@@ -1,12 +1,12 @@
 import React from 'react';
-import { FONTS, getSectionColors, getSectionStyles } from '../constants/theme';
+import { FONTS, getSectionColors } from '../constants/theme';
 import GoogleMap from '../components/access/GoogleMap';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const AccessPage: React.FC = () => {
   // セクションごとのカラーとスタイルを取得
   const accessColors = getSectionColors('light');
   const heroColors = getSectionColors('dark'); // ヒーローセクション用に追加
-  const accessStyles = getSectionStyles('light');
 
   return (
     <div>
@@ -22,10 +22,10 @@ const AccessPage: React.FC = () => {
       {/* コンテンツ - フッターを見えるようにするために通常のフロー内に配置 */}
       <div className="relative z-1 pb-0">
         {/* ヒーローセクション - HomePageと同様のスタイリング */}
-        <section className={`relative h-screen w-full flex items-end justify-start overflow-hidden`}>
+        <section className="relative h-screen w-full flex items-end justify-start overflow-hidden">
           
           {/* コンテンツ - 左下に配置 */}
-          <div className="container mx-auto px-6 py-32 relative z-10 text-center">
+          <div className="container mx-auto px-6 py-24 relative z-10 text-center">
             <div className="max-auto">
               <h1 className={`${FONTS.SERIF} ${heroColors.TEXT.DEFAULT} leading-tight`} 
                   style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}>
@@ -44,15 +44,15 @@ const AccessPage: React.FC = () => {
 
         {/* コンテンツセクション */}
         <div className="w-full">
-          {/* 地図と基本情報セクション */}
+          {/* 基本情報セクション */}
           <section className="py-16 bg-white bg-opacity-90">
             <div className="container mx-auto px-4">
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <h2 className={`${FONTS.SERIF} text-3xl font-bold mb-12 text-center ${accessColors.TEXT.DEFAULT}`}>
+                基本情報
+              </h2>
+              <div className="bg-white shadow-lg overflow-hidden max-w-4xl mx-auto">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-2/3 h-64 md:h-auto">
-                    <GoogleMap />
-                  </div>
-                  <div className={`md:w-1/3 p-6 ${accessColors.BG.PRIMARY}`}>
+                  <div className={`md:w-1/2 p-6 ${accessColors.BG.PRIMARY}`}>
                     <h2 className={`text-2xl font-bold mb-3 ${accessColors.TEXT.DEFAULT}`}>
                       山荘ミルク
                     </h2>
@@ -88,6 +88,15 @@ const AccessPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
+                  <div className="md:w-1/2 h-64 md:h-auto">
+                    <div className="h-full w-full bg-gray-100 flex items-center justify-center">
+                      <img 
+                        src="/images/access/road.jpg" 
+                        alt="山荘ミルク周辺の風景" 
+                        className="h-full w-full object-cover" 
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,82 +109,94 @@ const AccessPage: React.FC = () => {
                 交通案内
               </h2>
 
-              {/* アクセスマップ画像 */}
-              <div className="max-w-4xl mx-auto mb-12">
-                <img 
-                  src="/images/access-map.jpg" 
-                  alt="アクセスマップ" 
-                  className="w-full h-auto rounded-lg shadow-md" 
-                />
+              {/* マップセクション - Google Mapとアクセスマップを横並びに */}
+              <div className="max-w-6xl mx-auto mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Google Map */}
+                  <div className="h-80 md:h-96 overflow-hidden shadow-md">
+                    <GoogleMap />
+                  </div>
+                  
+                  {/* アクセスマップ画像 */}
+                  <div className="h-80 md:h-96 overflow-hidden shadow-md">
+                    <img 
+                      src="/images/access/map.jpg" 
+                      alt="アクセスマップ" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* 各種交通手段の情報 */}
               <div className="max-w-4xl mx-auto">
                 <div className="grid gap-8">
                   {/* 車でのアクセス */}
-                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
+                  <div className={`${accessColors.BG.PRIMARY} p-6 shadow-md border-l-4 border-primary`}>
                     <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
                       <span className="mr-3">🚗</span>お車の場合
                     </h3>
                     <div className="space-y-3">
                       <div className="flex items-start">
-                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道小黒川スマートインターから</div>
+                        <div className={`w-48 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道小黒川スマートICから</div>
                         <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>約10分</div>
                       </div>
                       <div className="flex items-start">
-                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道伊那ICから</div>
+                        <div className={`w-48 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道伊那ICから</div>
                         <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>約20分</div>
                       </div>
                       <div className="flex items-start">
-                        <div className={`w-36 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道駒ヶ根ICから</div>
-                        <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>〇〇分</div>
+                        <div className={`w-48 flex-shrink-0 font-medium ${accessColors.TEXT.SLIGHT_MUTED}`}>中央道駒ヶ根ICから</div>
+                        <div className={`flex-grow ${accessColors.TEXT.SEMI_MUTED}`}>約30分</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* 電車でのアクセス（東京方面） */}
-                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
-                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
-                      <span className="mr-3">🚄</span>電車の場合（東京方面から）
-                    </h3>
-                    <div>
-                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・岡谷乗換・飯田線伊那市駅下車【約3時間30分】</p>
-                    </div>
-                  </div>
+                  {/* 電車・バス情報をカードにまとめる */}
+                  <div className={`${accessColors.BG.PRIMARY} p-6 shadow-md border-l-4 border-primary`}>
+                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT}`}>公共交通機関をご利用の場合</h3>
+                    
+                    <div className="space-y-6">
+                      {/* 電車でのアクセス */}
+                      <div className="pb-4 border-b border-gray-200">
+                        <h4 className={`font-bold mb-3 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                          <span className="mr-2">🚄</span>電車の場合
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          <div>
+                            <h5 className={`font-medium ${accessColors.TEXT.SLIGHT_MUTED} mb-1`}>東京方面から</h5>
+                            <p className={`${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・岡谷乗換・飯田線伊那市駅下車【約3時間30分】</p>
+                          </div>
+                          <div>
+                            <h5 className={`font-medium ${accessColors.TEXT.SLIGHT_MUTED} mb-1`}>名古屋方面から</h5>
+                            <p className={`${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・塩尻乗換・飯田線伊那市駅下車【約3時間30分】</p>
+                          </div>
+                        </div>
+                      </div>
 
-                  {/* 電車でのアクセス（名古屋方面） */}
-                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
-                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
-                      <span className="mr-3">🚄</span>電車の場合（名古屋方面から）
-                    </h3>
-                    <div>
-                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>JR中央本線・塩尻乗換・飯田線伊那市駅下車【約3時間30分】</p>
-                    </div>
-                  </div>
-
-                  {/* 高速バスでのアクセス（東京方面） */}
-                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
-                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
-                      <span className="mr-3">🚌</span>高速バスの場合（東京方面から）
-                    </h3>
-                    <div>
-                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（新宿）・伊那市下車【約3時間30分】</p>
-                    </div>
-                  </div>
-
-                  {/* 高速バスでのアクセス（名古屋方面） */}
-                  <div className={`${accessColors.BG.PRIMARY} p-6 rounded-lg shadow-md`}>
-                    <h3 className={`text-xl font-bold mb-4 ${accessColors.TEXT.DEFAULT} flex items-center`}>
-                      <span className="mr-3">🚌</span>高速バスの場合（名古屋方面から）
-                    </h3>
-                    <div>
-                      <p className={`mb-2 ${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（名鉄バスセンター）・伊那市下車【約3時間30分】</p>
+                      {/* 高速バスでのアクセス */}
+                      <div>
+                        <h4 className={`font-bold mb-3 ${accessColors.TEXT.DEFAULT} flex items-center`}>
+                          <span className="mr-2">🚌</span>高速バスの場合
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          <div>
+                            <h5 className={`font-medium ${accessColors.TEXT.SLIGHT_MUTED} mb-1`}>東京方面から</h5>
+                            <p className={`${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（新宿）・伊那市下車【約3時間30分】</p>
+                          </div>
+                          <div>
+                            <h5 className={`font-medium ${accessColors.TEXT.SLIGHT_MUTED} mb-1`}>名古屋方面から</h5>
+                            <p className={`${accessColors.TEXT.SEMI_MUTED}`}>中央高速バス（名鉄バスセンター）・伊那市下車【約3時間30分】</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 text-center">
-                  <p className={`${accessColors.TEXT.MUTED} italic`}>
+                <div className="mt-8 p-4 bg-primary bg-opacity-5 border-l-4 border-primary">
+                  <p className={accessColors.TEXT.SEMI_MUTED}>
+                    <FaMapMarkerAlt className="inline-block mr-1 text-primary" />
                     宿泊の場合は伊那市駅または伊那市バス停までお迎えに伺います。事前にお問い合わせください。
                   </p>
                 </div>
@@ -186,8 +207,9 @@ const AccessPage: React.FC = () => {
           {/* フッターの前に不透明な背景のセクションを追加 */}
           <section className={`py-8 ${accessColors.BG.PRIMARY}`}>
             <div className="container mx-auto px-4">
-              <div className={`border-t border-primary/20 pt-8 text-center ${accessColors.TEXT.MUTED}`}>
+              <div className={`border-primary/20 text-center ${accessColors.TEXT.MUTED}`}>
                 <p>詳細なアクセス情報については、お気軽にお問い合わせください。</p>
+                <p className="mt-2">TEL: 0265-72-9990 / Email: info@milk-co.jp</p>
               </div>
             </div>
           </section>

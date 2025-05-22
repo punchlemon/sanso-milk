@@ -54,11 +54,6 @@ const Header: React.FC = () => {
       path: '/dogrun',
     },
     {
-      id: 'wedding',
-      label: '結婚式',
-      path: '/wedding',
-    },
-    {
       id: 'products',
       label: '特産品',
       path: '/products',

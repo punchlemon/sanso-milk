@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import WeddingPage from './pages/WeddingPage';
 import AccessPage from './pages/AccessPage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
@@ -48,7 +47,6 @@ function App() {
             {/* 施設・サービスカテゴリ */}
             <Route path="/lodging" element={<LodgingPage />} />
             <Route path="/dogrun" element={<DogRunPage />} />
-            <Route path="/wedding" element={<WeddingPage />} />
             <Route path="/food-club" element={<FoodClubPage />} />
 
             {/* ショッピングカテゴリ */}

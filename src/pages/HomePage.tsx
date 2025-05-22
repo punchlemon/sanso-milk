@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
       title: "イベントホール",
       description: "結婚式、同窓会など特別な集いの場",
       image: "/images/src/slider-image3.jpg",
-      path: "/wedding"
+      path: "/facilities"
     },
     {
       title: "アウトドアダイニング",
