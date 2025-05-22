@@ -22,17 +22,17 @@ const AccessPage: React.FC = () => {
       {/* コンテンツ - フッターを見えるようにするために通常のフロー内に配置 */}
       <div className="relative z-1 pb-0">
         {/* ヒーローセクション - HomePageと同様のスタイリング */}
-        <section className={`relative h-screen w-full flex items-center justify-center overflow-hidden`}>
+        <section className={`relative h-screen w-full flex items-end justify-start overflow-hidden`}>
           
-          {/* コンテンツ */}
-          <div className="container mx-auto px-6 py-20 relative z-10 text-center">
-            <div className="mx-auto max-w-3xl">
-              <h1 className={`${FONTS.SERIF} ${heroColors.TEXT.DEFAULT} mb-8 leading-tight`} 
+          {/* コンテンツ - 左下に配置 */}
+          <div className="container mx-auto px-6 py-32 relative z-10 text-center">
+            <div className="max-auto">
+              <h1 className={`${FONTS.SERIF} ${heroColors.TEXT.DEFAULT} leading-tight`} 
                   style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}>
                 アクセス
               </h1>
-              <p className={`${heroColors.TEXT.SEMI_MUTED} mb-12 max-w-xl mx-auto`} 
-                style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}>
+              <p className={`${heroColors.TEXT.SEMI_MUTED}`} 
+                 style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}>
                 山荘ミルクへのご案内
               </p>
               <div className={`text-sm ${heroColors.TEXT.MUTED}`}>
