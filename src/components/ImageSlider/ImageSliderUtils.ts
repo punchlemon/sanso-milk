@@ -43,10 +43,8 @@ export const determineImageIndex = (progress: number, totalImages: number): numb
  * スライドアニメーションのスタイルを生成する
  * 
  * @param currentIndex 現在の画像インデックス
- * @param totalImages 画像の総数
  * @returns CSSのtransform属性用の文字列
  */
-export const generateSlideStyle = (currentIndex: number, totalImages: number): string => {
-  // スライドの横移動量を計算（-100%は1枚分の左移動）
-  return `translateX(-${currentIndex * 100}%)`;
+export const generateSlideStyle = (currentIndex: number): string => {
+  return `transform: translateX(-${currentIndex * 100}%);`;
 };

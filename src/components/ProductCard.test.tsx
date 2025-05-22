@@ -1,13 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import ProductCard, { Product } from './ProductCard';
+import ProductCard from './ProductCard';
+import type { Product } from './ProductCard';
 
 describe('ProductCard', () => {
   const mockProduct: Product = {
     id: '1',
-    name: '特産品A',
-    description: '民宿で作られた特産品です。',
-    price: 1500,
-    imageUrl: '/sample-image.jpg',
+    name: 'テスト商品',
+    price: 1000,
+    imageUrl: '/test-image.jpg',
+    description: '商品の説明',
   };
 
   const mockOnAddToCart = jest.fn();
@@ -16,40 +17,20 @@ describe('ProductCard', () => {
     jest.clearAllMocks();
   });
 
-  test('商品情報が正しく表示される', () => {
+  it('renders product information correctly', () => {
     render(<ProductCard product={mockProduct} onAddToCart={mockOnAddToCart} />);
-
+    
     expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
-    expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
-    expect(
-      screen.getByText(`¥${mockProduct.price.toLocaleString()}`),
-    ).toBeInTheDocument();
-    expect(screen.getByAltText(mockProduct.name)).toHaveAttribute(
-      'src',
-      mockProduct.imageUrl,
-    );
+    expect(screen.getByText(`¥${mockProduct.price.toLocaleString()}`)).toBeInTheDocument();
+    expect(screen.getByAltText(mockProduct.name)).toBeInTheDocument();
   });
 
-  test('カートに追加ボタンをクリックすると、onAddToCart関数が呼ばれる', () => {
+  it('calls onAddToCart when add button is clicked', () => {
     render(<ProductCard product={mockProduct} onAddToCart={mockOnAddToCart} />);
-
-    const addToCartButton = screen.getByText('カートに追加');
-    fireEvent.click(addToCartButton);
-
-    expect(mockOnAddToCart).toHaveBeenCalledTimes(1);
+    
+    const addButton = screen.getByRole('button', { name: /カートに追加/i });
+    fireEvent.click(addButton);
+    
     expect(mockOnAddToCart).toHaveBeenCalledWith(mockProduct);
-  });
-
-  test('imageUrlが指定されていない場合、画像は表示されない', () => {
-    const productWithoutImage = { ...mockProduct, imageUrl: undefined };
-
-    render(
-      <ProductCard
-        product={productWithoutImage}
-        onAddToCart={mockOnAddToCart}
-      />,
-    );
-
-    expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 });

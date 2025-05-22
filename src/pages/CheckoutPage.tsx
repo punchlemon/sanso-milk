@@ -29,8 +29,6 @@ const CheckoutForm: React.FC = () => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
@@ -218,7 +216,7 @@ const CheckoutForm: React.FC = () => {
 
       <div className="flex flex-col md:flex-row justify-between gap-4">
         <Link
-          to="/cart"
+          to="/onlineshop"
           className="bg-transparent border border-primary text-primary hover:bg-natural hover:text-primary-dark py-2 px-6 rounded text-center transition-colors"
         >
           カートに戻る

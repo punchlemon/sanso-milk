@@ -46,11 +46,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     resumeAutoPlay
   } = useImageSliderNavigation({ images, timing: TIMING, autoPlay });
 
-  // 画像名取得ヘルパー
-  const getImageName = (index: number) => images[index]?.split('/').pop() || '';
-  const nextImageIndex = (currentImageIndex + 1) % images.length;
-  const nextImageName = getImageName(nextImageIndex);
-
   // 初回マウント: 全画像の不透明度を0→初期画像をフェードインさせ、ズームを開始
   useEffect(() => {
     // 全画像透明化
