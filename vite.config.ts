@@ -11,13 +11,13 @@ export default defineConfig(({ command }) => ({
     headers: {
       'Content-Security-Policy': `
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://*.stripe.com 'unsafe-eval';
-        script-src-elem 'self' 'unsafe-inline' https://*.stripe.com;
+        script-src 'self' 'unsafe-inline' https://*.stripe.com https://*.google.com https://*.googleapis.com 'unsafe-eval';
+        script-src-elem 'self' 'unsafe-inline' https://*.stripe.com https://*.google.com https://*.googleapis.com;
         style-src 'self' 'unsafe-inline';
-        img-src 'self' data: blob:;
+        img-src 'self' data: blob: https://*.google.com https://*.googleapis.com https://*.gstatic.com;
         font-src 'self';
-        connect-src 'self' https://*.stripe.com;
-        frame-src 'self' https://*.stripe.com;
+        connect-src 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com;
+        frame-src 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com;
       `.replace(/\s+/g, ' ').trim()
     }
   },

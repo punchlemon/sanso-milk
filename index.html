@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSP設定 - 外部GoogleFonts参照を削除 -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.stripe.com 'unsafe-inline' 'unsafe-eval'; script-src-elem 'self' https://*.stripe.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.stripe.com; img-src 'self' data: https:; font-src 'self' data:; frame-src 'self' https://*.stripe.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com 'unsafe-inline' 'unsafe-eval'; script-src-elem 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com; img-src 'self' data: https: https://*.google.com https://*.googleapis.com https://*.gstatic.com; font-src 'self' data:; frame-src 'self' https://*.stripe.com https://*.google.com https://*.googleapis.com;">
     <!-- Google Fontsへの参照を削除し、ローカルフォントを使用 -->
     <!-- インラインスタイルでフォントを直接適用 -->
     <style>
