@@ -11,67 +11,43 @@ const fetchProductsFromAPI = (): Promise<Product[]> => {
       resolve([
         {
           id: '1',
-          name: '山の恵み 蜂蜜',
+          name: '自家製キムチ',
           description:
-            '周辺の山に自生する花々から集められた純粋な蜂蜜です。濃厚な風味と深い香りが特徴です。',
+            '無農薬有機栽培の食材とクリスタル岩塩で手作りした絶品のキムチ',
           price: 1800,
-          imageUrl: '/images/honey.jpg',
+          imageUrl: '/images/products/kimuchi.jpg',
         },
         {
           id: '2',
-          name: '山菜の手作り佃煮',
+          name: '自家製味噌',
           description:
-            '春に採れたての山菜を伝統的な製法で佃煮に。ご飯のお供やお酒のおつまみに最適です。',
-          price: 1200,
-          imageUrl: '/images/tsukudani.jpg',
+            '無農薬有機栽培の食材とクリスタル岩塩で手作りした絶品の味噌',
+          price: 1800,
+          imageUrl: '/images/products/miso.jpg',
         },
         {
           id: '3',
-          name: '薪ストーブのクッキー',
+          name: '自家製醤油',
           description:
-            '当館の薪ストーブでじっくり焼き上げた手作りクッキー。素朴な甘さと香ばしさが魅力です。',
-          price: 950,
-          imageUrl: '/images/cookies.jpg',
+            '無農薬有機栽培の食材とクリスタル岩塩で手作りした絶品の醤油',
+          price: 1800,
+          imageUrl: '/images/products/soysauce.jpg',
         },
         {
           id: '4',
-          name: '山のハーブティーセット',
+          name: '自家製ケチャップ',
           description:
-            '山里で栽培したハーブを丁寧に乾燥させました。5種類のブレンドが楽しめるギフトセットです。',
-          price: 2800,
-          imageUrl: '/images/herbtea.jpg',
+            '無農薬有機栽培の食材とクリスタル岩塩で手作りした絶品のケチャップ',
+          price: 1800,
+          imageUrl: '/images/products/ketchup.jpg',
         },
         {
           id: '5',
-          name: '地元産 栗の渋皮煮',
+          name: 'クリスタル岩塩',
           description:
-            '近隣の山で採れた大粒の栗を、伝統的な手法でじっくりと煮込んだ贅沢な一品です。',
-          price: 1500,
-          imageUrl: '/images/chestnut.jpg',
-        },
-        {
-          id: '6',
-          name: '手織りコースター',
-          description:
-            '地元の職人が一つ一つ手織りした木の温もりを感じるコースター。4枚セットでお届けします。',
-          price: 3200,
-          imageUrl: '/images/coaster.jpg',
-        },
-        {
-          id: '7',
-          name: '山のジャム詰め合わせ',
-          description:
-            '季節の果実を使った手作りジャム3種のセット。山ぶどう、りんご、いちごの味わいをお楽しみください。',
-          price: 2400,
-          imageUrl: '/images/jam-set.jpg',
-        },
-        {
-          id: '8',
-          name: '杉の森の入浴剤',
-          description:
-            '周辺の杉林から抽出したエッセンシャルオイルを使用。森林浴の香りを自宅でお楽しみいただけます。',
-          price: 1300,
-          imageUrl: '/images/bath-salt.jpg',
+            '',
+          price: 1800,
+          imageUrl: '/images/products/salt.jpg',
         },
       ]);
     }, 500);

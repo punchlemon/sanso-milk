@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectCartItemCount } from '../store/slices/cartSlice';
 import logoImage from '../assets/logo/logo.svg';
 import { DARK_SECTION, FONTS } from '../constants/theme';
 
@@ -13,7 +11,6 @@ interface MenuItem {
 }
 
 const Header: React.FC = () => {
-  const cartItemCount = useSelector(selectCartItemCount);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const location = useLocation();
@@ -54,9 +51,9 @@ const Header: React.FC = () => {
       path: '/dogrun',
     },
     {
-      id: 'products',
-      label: '特産品',
-      path: '/products',
+      id: 'onlineshop',
+      label: 'オンラインショップ',
+      path: '/onlineshop',
     },
     {
       id: 'access',
@@ -132,20 +129,6 @@ const Header: React.FC = () => {
                   </li>
                 ))}
                 <li className={`border-t border-primary-light my-2`}></li>
-                <li>
-                  <Link
-                    to="/cart"
-                    className={`flex items-center justify-between px-4 py-2 ${DARK_SECTION.TEXT.DEFAULT} hover:${DARK_SECTION.BG.PRIMARY_LIGHT}`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span>カート</span>
-                    {cartItemCount > 0 && (
-                      <span className={`${DARK_SECTION.ACCENT.BG} ${DARK_SECTION.TEXT.DEFAULT} text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center`}>
-                        {cartItemCount}
-                      </span>
-                    )}
-                  </Link>
-                </li>
               </ul>
             </nav>
           </div>
@@ -190,19 +173,6 @@ const Header: React.FC = () => {
               </ul>
             </nav>
 
-            {/* カートリンク */}
-            <div className="hidden md:block">
-              <Link to="/cart" className={`relative p-2 ${DARK_SECTION.TEXT.SLIGHT_MUTED} hover:${DARK_SECTION.TEXT.DEFAULT} transition-colors`} aria-label="カートを見る">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                {cartItemCount > 0 && (
-                  <span className={`absolute -top-1 -right-1 ${DARK_SECTION.ACCENT.BG} ${DARK_SECTION.TEXT.DEFAULT} text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center`}>
-                    {cartItemCount}
-                  </span>
-                )}
-              </Link>
-            </div>
           </div>
         </div>
       </header>

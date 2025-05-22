@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-2 pl-3">
                 <li>
                   <Link
-                    to="/products"
+                    to="/onlineshop"
                     className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
                   >
                     商品一覧

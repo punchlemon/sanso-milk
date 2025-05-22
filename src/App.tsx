@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AccessPage from './pages/AccessPage';
-import ProductsPage from './pages/ProductsPage';
-import CartPage from './pages/CartPage';
+import OnlineShopPage from './pages/OnlineShopPage';
 import CheckoutPage from './pages/CheckoutPage';
 import LodgingPage from './pages/LodgingPage';
 import DogRunPage from './pages/DogRunPage';
@@ -50,8 +49,7 @@ function App() {
             <Route path="/food-club" element={<FoodClubPage />} />
 
             {/* ショッピングカテゴリ */}
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/onlineshop" element={<OnlineShopPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </main>

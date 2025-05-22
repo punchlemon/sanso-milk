@@ -28,9 +28,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
             <span className="text-gray-600 text-sm">写真準備中</span>
           </div>
         )}
-        <div className="absolute top-2 left-2 bg-[#8b6b4d] text-white text-xs font-bold py-1 px-2 rounded-md">
-          手作り
-        </div>
       </div>
       <div className="p-4">
         <h3 className="text-lg font-bold mb-2 text-[#2a3c30]">

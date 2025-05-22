@@ -53,19 +53,19 @@ const HomePage: React.FC = () => {
     {
       title: "イベントホール",
       description: "結婚式、同窓会など特別な集いの場",
-      image: "/images/src/slider-image3.jpg",
+      image: "/images/facilities/hall.jpg",
       path: "/facilities"
     },
     {
-      title: "アウトドアダイニング",
+      title: "テラス",
       description: "自然の中で楽しむ開放的なお食事体験",
-      image: "/images/src/slider-image1.jpg",
+      image: "/images/facilities/terrace.jpg",
       path: "/food-club"
     },
     {
-      title: "インドアレストラン",
+      title: "レストラン",
       description: "上質な空間で味わう厳選料理",
-      image: "/images/src/slider-image2.jpg",
+      image: "/images/facilities/restaurant.jpg",
       path: "/food-club"
     },
     {
