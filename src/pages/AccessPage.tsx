@@ -1,6 +1,6 @@
 import React from 'react';
 import { FONTS, getSectionColors } from '../constants/theme';
-import FaMapMarkerAlt from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const AccessPage: React.FC = () => {
   // セクションごとのカラーとスタイルを取得
