@@ -1,13 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AccessPage from './pages/AccessPage';
-import OnlineShopPage from './pages/OnlineShopPage';
-import CheckoutPage from './pages/CheckoutPage';
 import LodgingPage from './pages/LodgingPage';
-import DogRunPage from './pages/DogRunPage';
-import FoodClubPage from './pages/FoodClubPage';
-import MonthlySchedulePage from './pages/MonthlySchedulePage';
-import ContactPage from './pages/ContactPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { useEffect } from 'react';
@@ -18,11 +17,11 @@ import './custom-fonts.css';
 // ScrollToTop component to handle scroll restoration
 function ScrollToTop() {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return null;
 }
 
@@ -30,27 +29,19 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div style={{ 
-        fontFamily: '"GEN EI Koburi Mincho", serif' 
-      }} className="flex flex-col min-h-screen text-primary-dark relative">
+      <div
+        style={{
+          fontFamily: '"GEN EI Koburi Mincho", serif',
+        }}
+        className="flex flex-col min-h-screen text-primary-dark relative"
+      >
         <Header />
 
         <main className="flex-grow relative z-10">
           <Routes>
-            {/* 基本情報カテゴリ */}
             <Route path="/" element={<HomePage />} />
             <Route path="/access" element={<AccessPage />} />
-            <Route path="/monthly-schedule" element={<MonthlySchedulePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-
-            {/* 施設・サービスカテゴリ */}
             <Route path="/lodging" element={<LodgingPage />} />
-            <Route path="/dogrun" element={<DogRunPage />} />
-            <Route path="/food-club" element={<FoodClubPage />} />
-
-            {/* ショッピングカテゴリ */}
-            <Route path="/onlineshop" element={<OnlineShopPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </main>
 

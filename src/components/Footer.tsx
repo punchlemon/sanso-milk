@@ -2,47 +2,55 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../assets/logo/logo.svg';
 import { DARK_SECTION, FONTS } from '../constants/theme';
+import {
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+  FaClock,
+  FaCalendarAlt,
+} from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   return (
-    <footer className={`${DARK_SECTION.BG.PRIMARY} ${DARK_SECTION.TEXT.SLIGHT_MUTED} border-t border-primary-light relative z-20`} style={{ backgroundColor: '#000' }}>
-      <div className="container mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
-          <div className="md:w-1/3">
+    <footer
+      className={`${DARK_SECTION.BG.PRIMARY} ${DARK_SECTION.TEXT.SLIGHT_MUTED} border-t border-gray-800 relative z-20`}
+      style={{ backgroundColor: '#000' }}
+    >
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          {/* ロゴと説明 */}
+          <div className="md:col-span-5">
             <div className="mb-6 flex items-center">
-              <img 
-                src={logoImage} 
-                alt="山荘ミルク ロゴ" 
-                className="w-8 h-8 mr-3"
+              <img
+                src={logoImage}
+                alt="山荘ミルク ロゴ"
+                className="h-12 w-auto mr-3"
               />
-              <span className={`text-xl font-bold ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>山荘ミルク</span>
+              <span
+                className={`text-2xl font-bold ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}
+              >
+                山荘ミルク
+              </span>
             </div>
-            <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} mb-6 leading-relaxed`}>
+            <p
+              className={`${DARK_SECTION.TEXT.SEMI_MUTED} mb-8 leading-relaxed text-base`}
+            >
               標高およそ1,000mの中央アルプスの麓、
+              <br />
+              自然に囲まれた静寂の中で、特別なひとときを。
               <br />
               安全な食と健康を大切にする山荘です。
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
-                className={`${DARK_SECTION.TEXT.MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors`}
-                aria-label="Facebook"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className={`${DARK_SECTION.TEXT.MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors`}
+                href="https://www.instagram.com/milk.tsunagu/"
+                className={`${DARK_SECTION.TEXT.MUTED} hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 p-2 rounded-full`}
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -52,77 +60,125 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
-                施設案内
-              </h3>
-              <ul className="space-y-2 pl-3">
-                <li>
-                  <Link
-                    to="/lodging"
-                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
-                  >
-                    宿泊施設
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/food-club"
-                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
-                  >
-                    食の会
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* 営業情報 */}
+          <div className="md:col-span-3">
+            <h3
+              className={`text-lg font-bold mb-6 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF} border-b border-gray-800 pb-2`}
+            >
+              営業情報
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <FaClock className={`mt-1 mr-3 ${DARK_SECTION.TEXT.MUTED}`} />
+                <div>
+                  <p className={`font-medium ${DARK_SECTION.TEXT.DEFAULT}`}>
+                    営業時間
+                  </p>
+                  <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} text-sm`}>
+                    11:00～17:00
+                    <br />
+                    <span className="text-xs text-gray-400">
+                      (夜はご予約のみの営業)
+                    </span>
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <FaCalendarAlt
+                  className={`mt-1 mr-3 ${DARK_SECTION.TEXT.MUTED}`}
+                />
+                <div>
+                  <p className={`font-medium ${DARK_SECTION.TEXT.DEFAULT}`}>
+                    定休日
+                  </p>
+                  <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} text-sm`}>
+                    毎週 月曜日・火曜日
+                    <br />
+                    <span className="text-xs text-gray-400">
+                      (6月は月・火も営業 11:00～15:00)
+                    </span>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-            <div>
-              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
-                アクセス
-              </h3>
-              <address className={`not-italic pl-3 ${DARK_SECTION.TEXT.SEMI_MUTED} space-y-2`}>
-                <p>長野県伊那市横山風の谷9749</p>
-                <p>Tel: 0X0-XXXX-XXXX</p>
-                <p className="break-all">Email: info@milk-co.jp</p>
-              </address>
-            </div>
+          {/* サイトマップ */}
+          <div className="md:col-span-2">
+            <h3
+              className={`text-lg font-bold mb-6 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF} border-b border-gray-800 pb-2`}
+            >
+              サイトマップ
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/"
+                  className={`${DARK_SECTION.TEXT.SEMI_MUTED} hover:text-white transition-colors block py-1`}
+                >
+                  ホーム
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/lodging"
+                  className={`${DARK_SECTION.TEXT.SEMI_MUTED} hover:text-white transition-colors block py-1`}
+                >
+                  宿泊案内
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/access"
+                  className={`${DARK_SECTION.TEXT.SEMI_MUTED} hover:text-white transition-colors block py-1`}
+                >
+                  アクセス
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            <div>
-              <h3 className={`text-lg font-bold mb-4 border-l-4 ${DARK_SECTION.ACCENT2.BG} pl-3 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF}`}>
-                リンク
-              </h3>
-              <ul className="space-y-2 pl-3">
-                <li>
-                  <Link
-                    to="/onlineshop"
-                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
-                  >
-                    商品一覧
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
-                  >
-                    お問い合わせ
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/access"
-                    className={`${DARK_SECTION.TEXT.SEMI_MUTED} ${DARK_SECTION.ACCENT.HOVER} transition-colors block`}
-                  >
-                    アクセス
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* お問い合わせ */}
+          <div className="md:col-span-2">
+            <h3
+              className={`text-lg font-bold mb-6 ${DARK_SECTION.TEXT.DEFAULT} ${FONTS.SERIF} border-b border-gray-800 pb-2`}
+            >
+              お問い合わせ
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <FaMapMarkerAlt
+                  className={`mt-1 mr-3 ${DARK_SECTION.TEXT.MUTED}`}
+                />
+                <div className={`${DARK_SECTION.TEXT.SEMI_MUTED}`}>
+                  〒396-0029
+                  <br />
+                  長野県伊那市横山風の谷9749
+                </div>
+              </li>
+              <li className="flex items-center">
+                <FaPhone className={`mr-3 ${DARK_SECTION.TEXT.MUTED}`} />
+                <a
+                  href="tel:0265729990"
+                  className={`${DARK_SECTION.TEXT.SEMI_MUTED} hover:text-white transition-colors`}
+                >
+                  0265-72-9990
+                </a>
+              </li>
+              <li className="flex items-center">
+                <FaEnvelope className={`mr-3 ${DARK_SECTION.TEXT.MUTED}`} />
+                <a
+                  href="mailto:info@milk-co.jp"
+                  className={`${DARK_SECTION.TEXT.SEMI_MUTED} hover:text-white transition-colors`}
+                >
+                  info@milk-co.jp
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className={`mt-10 pt-6 border-t border-primary-light text-center`}>
+        <div className={`mt-16 pt-6 border-t border-gray-800 text-center`}>
           <div className={`${DARK_SECTION.TEXT.MUTED} text-sm`}>
             &copy; {new Date().getFullYear()} 山荘ミルク All rights reserved.
           </div>
