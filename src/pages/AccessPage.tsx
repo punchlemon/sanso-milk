@@ -1,6 +1,6 @@
 import React from 'react';
 import { FONTS, getSectionColors } from '../constants/theme';
-import { FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
+import FaMapMarkerAlt from 'react-icons/fa';
 
 const AccessPage: React.FC = () => {
   // セクションごとのカラーとスタイルを取得
@@ -123,19 +123,6 @@ const AccessPage: React.FC = () => {
                           </span>
                         </p>
                       </div>
-                    </div>
-
-                    {/* 住所の下にGoogleマップリンクを追加 */}
-                    <div className="mt-4">
-                      <a
-                        href="https://goo.gl/maps/hJKmBdL5ZYYjMHvi6"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-1.5 bg-primary text-white rounded hover:bg-primary-dark transition-colors text-sm"
-                      >
-                        <FaExternalLinkAlt className="mr-1.5" size={14} />
-                        Googleマップで見る
-                      </a>
                     </div>
                   </div>
                   <div className="md:w-1/2">
