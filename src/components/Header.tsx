@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoImage from '../assets/logo/logo.svg';
+import { logoDark } from '../assets/logo'; // 暗い背景用の白いロゴに変更
 import { DARK_SECTION } from '../constants/theme';
 
 // メニュー項目のタイプ定義
@@ -142,7 +142,7 @@ const Header: React.FC = () => {
             {/* ロゴ */}
             <Link to="/" className="py-3" onClick={() => setActiveTab('home')}>
               <img
-                src={logoImage}
+                src={logoDark}
                 alt="山荘ミルク ロゴ"
                 className="h-20 w-auto"
               />

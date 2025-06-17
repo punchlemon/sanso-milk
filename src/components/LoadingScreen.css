@@ -1,0 +1,36 @@
+/* ローディング画面用のカスタムCSS */
+
+/* 円周プログレスのスムーズなアニメーション */
+.loading-progress-circle {
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+
+/* ロゴの呼吸アニメーション */
+.loading-logo {
+  animation: logoBreath 2s ease-in-out infinite;
+}
+
+@keyframes logoBreath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* ローディング画面のフェードアウト */
+.loading-fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
