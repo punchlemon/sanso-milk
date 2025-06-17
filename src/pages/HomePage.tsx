@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageSlider from '../components/ImageSlider';
 import { FONTS, getSectionColors } from '../constants/theme';
 
 // 施設情報の型定義
 const HomePage: React.FC = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // アプリレベルでの画像読み込み完了を検知
+  useEffect(() => {
+    // アプリレベルでの画像読み込みが完了している場合
+    const checkImagesLoaded = () => {
+      // 画像読み込み状況をチェック（localStorage等で管理されることを想定）
+      const loadedStatus = sessionStorage.getItem('imagesLoaded');
+      if (loadedStatus === 'true') {
+        setImagesLoaded(true);
+      } else {
+        // 少し遅延させてからアニメーションを開始
+        const timer = setTimeout(() => {
+          setImagesLoaded(true);
+        }, 500);
+        return () => clearTimeout(timer);
+      }
+    };
+
+    checkImagesLoaded();
+  }, []);
+
   // スライダー用の画像配列
   const sliderImages = [
     '/images/slider/image1.jpg',
@@ -39,6 +61,7 @@ const HomePage: React.FC = () => {
             showIndicators={false}
             className="w-full h-full"
             debug={false}
+            startAnimation={imagesLoaded}
           />
           <div
             className={`absolute inset-0 ${heroColors.OVERLAY.LIGHT} z-5`}

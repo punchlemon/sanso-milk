@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoImage from '../assets/logo/logo.svg';
+import { logoDark } from '../assets/logo';
 import { DARK_SECTION, FONTS } from '../constants/theme';
 import { INSTAGRAM_ACCOUNTS } from '../utils/instagramUtils';
 import InstagramProfileButton from './InstagramProfileButton';
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-5">
             <div className="mb-6 flex items-center">
               <img
-                src={logoImage}
+                src={logoDark}
                 alt="山荘ミルク ロゴ"
                 className="h-12 w-auto mr-3"
               />

@@ -6,12 +6,12 @@ import { SLIDER_TIMING } from './ImageSlider/ImageSliderConstants';
 
 /**
  * イメージスライダーコンポーネント
- * 
+ *
  * 各画像は以下のように表示されます:
  * - フェードイン + ズームアウト (4秒)
  * - ズームアウト継続 (3秒)
  * - フェードアウト + ズームアウト継続 (4秒) + 次の画像フェードイン
- * 
+ *
  * 全体で11秒のサイクルです。
  * 画像は表示中（11秒間）ずっとズームアウトし続けます。
  */
@@ -22,6 +22,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   showIndicators = true,
   className = '',
   backgroundColor = 'transparent',
+  startAnimation = true,
 }) => {
   // SLIDER_TIMINGからアニメーションのタイミング設定を取得
   const TIMING = SLIDER_TIMING;
@@ -32,9 +33,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     imageOpacityLevels,
     startZoomAnimation,
     animateOpacity,
-    resetOpacity
+    resetOpacity,
   } = useImageSliderAnimation({ images, timing: TIMING });
-  
+
   const {
     currentImageIndex,
     previousImageIndex,
@@ -43,11 +44,17 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     goToImage,
     isTransitioning,
     pauseAutoPlay,
-    resumeAutoPlay
-  } = useImageSliderNavigation({ images, timing: TIMING, autoPlay });
+    resumeAutoPlay,
+  } = useImageSliderNavigation({
+    images,
+    timing: TIMING,
+    autoPlay: autoPlay && startAnimation,
+  });
 
   // 初回マウント: 全画像の不透明度を0→初期画像をフェードインさせ、ズームを開始
   useEffect(() => {
+    if (!startAnimation) return;
+
     // 全画像透明化
     resetOpacity([]);
     // 初期画像フェードイン 0→0
@@ -55,7 +62,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     // 初期画像ズーム開始
     startZoomAnimation(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [startAnimation]);
 
   // 画像切り替え時: 新しい画像のズームを開始し、旧→新のフェード
   useEffect(() => {
@@ -64,7 +71,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     startZoomAnimation(currentImageIndex);
     // フェードアウト/イン
     animateOpacity(previousImageIndex, currentImageIndex);
-  }, [currentImageIndex, previousImageIndex, startZoomAnimation, animateOpacity]);
+  }, [
+    currentImageIndex,
+    previousImageIndex,
+    startZoomAnimation,
+    animateOpacity,
+  ]);
 
   return (
     <div
@@ -83,12 +95,17 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               backgroundImage: `url(${image})`,
               opacity: imageOpacityLevels[index] ?? 0,
               transform: `scale(${imageZoomLevels[index] || TIMING.ZOOM_START})`,
-              zIndex: index === previousImageIndex && isTransitioning ? 2 : index === currentImageIndex ? 1 : 0
+              zIndex:
+                index === previousImageIndex && isTransitioning
+                  ? 2
+                  : index === currentImageIndex
+                    ? 1
+                    : 0,
             }}
           />
         ))}
       </div>
-      
+
       {/* 矢印ナビゲーション */}
       {showArrows && (
         <div className="absolute inset-0 flex items-center justify-between p-4">
@@ -98,8 +115,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             disabled={isTransitioning}
             aria-label="前の画像"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
           <button
@@ -108,13 +136,24 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             disabled={isTransitioning}
             aria-label="次の画像"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
         </div>
       )}
-      
+
       {/* インジケーター */}
       {showIndicators && (
         <div className="absolute bottom-4 left-0 right-0 flex justify中心 gap-2">
