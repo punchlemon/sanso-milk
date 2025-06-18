@@ -117,14 +117,11 @@ const AccessPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="md:w-1/2">
-                    <div className="relative h-64 md:h-full w-full bg-gray-100">
-                      <img
-                        src="/images/access/road.jpg"
-                        alt="山荘ミルク周辺の風景"
-                        className="absolute inset-0 w-full h-full object-cover md:object-center"
-                        style={{ objectPosition: 'center 30%' }}
-                      />
-                    </div>
+                    <img
+                      src="/images/access/road.jpg"
+                      alt="山荘ミルク周辺の風景"
+                      className="w-full h-auto object-contain"
+                    />
                   </div>
                 </div>
               </div>
@@ -143,13 +140,15 @@ const AccessPage: React.FC = () => {
               {/* マップセクション - アクセスマップを中央に配置 */}
               <div className="max-w-4xl mx-auto mb-12">
                 <div className="flex justify-center">
-                  {/* アクセスマップ画像 */}
-                  <div className="h-80 md:h-96 overflow-hidden shadow-md w-full max-w-xl">
-                    <img
-                      src="/images/access/map.jpg"
-                      alt="アクセスマップ"
-                      className="w-full h-full object-cover"
-                    />
+                  {/* アクセスマップ画像 - シンプル表示 */}
+                  <div className="w-full max-w-2xl">
+                    <div className="relative h-80 md:h-96 lg:h-[32rem]">
+                      <img
+                        src="/images/access/map.jpg"
+                        alt="アクセスマップ - 山荘ミルクへの道案内"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
