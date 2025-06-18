@@ -79,21 +79,25 @@ const Header: React.FC = () => {
       {/* 右上の固定メニューボタン - スクロールしても維持 */}
       <div className="fixed top-4 right-4 z-[60]">
         <button
-          className={`${isScrolled ? DARK_SECTION.OVERLAY.DARK : DARK_SECTION.OVERLAY.LIGHT} hover:bg-black/70 backdrop-blur-sm p-3 rounded-full shadow-lg transition-all duration-300`}
+          className={`${isScrolled ? DARK_SECTION.OVERLAY.DARK : DARK_SECTION.OVERLAY.LIGHT} hover:bg-black/70 backdrop-blur-sm p-3 shadow-lg transition-all duration-300 group`}
           onClick={toggleMenu}
           aria-label="メニュー"
         >
-          <div
-            className={`flex flex-col gap-1.5 ${isMenuOpen ? 'relative' : ''}`}
-          >
+          <div className="w-6 h-6 relative flex flex-col justify-center items-center">
             <span
-              className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? 'rotate-45 absolute' : ''}`}
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                isMenuOpen ? 'rotate-45' : 'translate-y-[-4px]'
+              }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? 'opacity-0' : ''}`}
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                isMenuOpen ? 'opacity-0' : 'opacity-100'
+              }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-white transition-all ${isMenuOpen ? '-rotate-45 absolute' : ''}`}
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                isMenuOpen ? '-rotate-45' : 'translate-y-[4px]'
+              }`}
             ></span>
           </div>
         </button>
@@ -102,30 +106,49 @@ const Header: React.FC = () => {
       {/* メニューオーバーレイ */}
       {isMenuOpen && (
         <div
-          className={`fixed inset-0 ${DARK_SECTION.OVERLAY.DARK} backdrop-blur-md z-50`}
+          className={`fixed inset-0 ${DARK_SECTION.OVERLAY.DARK} backdrop-blur-md z-50 transition-all duration-300`}
           onClick={toggleMenu}
         >
           <div
-            className={`absolute right-4 top-20 ${DARK_SECTION.BG.PRIMARY} bg-opacity-90 rounded-md shadow-xl w-64`}
+            className={`absolute right-4 top-20 bg-white/95 backdrop-blur-sm shadow-2xl w-72 overflow-hidden border border-white/20 transform transition-all duration-300 ease-out`}
             onClick={(e) => e.stopPropagation()}
           >
             <nav>
-              <ul className="py-2">
-                {menuItems.map((item) => (
-                  <li key={`overlay-${item.id}`}>
+              <ul className="py-3">
+                {menuItems.map((item, index) => (
+                  <li key={`overlay-${item.id}`} className="relative">
                     <Link
                       to={item.path}
-                      className={`block px-4 py-2 ${DARK_SECTION.TEXT.DEFAULT} hover:${DARK_SECTION.BG.PRIMARY_LIGHT} border-l-2 ${
+                      className={`block px-6 py-4 text-gray-800 font-medium text-lg transition-all duration-200 relative group ${
                         activeTab === item.id
-                          ? `border-accent ${DARK_SECTION.BG.PRIMARY_DARK}`
-                          : 'border-transparent'
+                          ? 'bg-gradient-to-r from-primary/10 to-accent2/10 text-primary-dark'
+                          : 'hover:bg-gray-50'
                       }`}
                       onClick={() => {
                         setActiveTab(item.id);
                         setIsMenuOpen(false);
                       }}
                     >
-                      {item.label}
+                      <div className="flex items-center justify-between">
+                        <span className="relative z-10">{item.label}</span>
+                        {activeTab === item.id && (
+                          <div className="w-2 h-2 bg-accent2 transition-all duration-200"></div>
+                        )}
+                      </div>
+
+                      {/* ホバー効果の下線 */}
+                      <div
+                        className={`absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary to-accent2 transform origin-left transition-all duration-200 ${
+                          activeTab === item.id
+                            ? 'scale-x-100'
+                            : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
+                      ></div>
+
+                      {/* セパレーター */}
+                      {index < menuItems.length - 1 && (
+                        <div className="absolute bottom-0 left-6 right-6 h-px bg-gray-200"></div>
+                      )}
                     </Link>
                   </li>
                 ))}
