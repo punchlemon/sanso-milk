@@ -89,3 +89,33 @@
     font-family: var(--font-geneikoburi), 'GEN EI Koburi Mincho', serif !important;
   }
 }
+
+@layer utilities {
+  /* スマホでの改行を自動調整するクラス */
+  .mobile-break-words {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* スマホで文章が長い場合の調整 */
+  .mobile-text-balance {
+    text-wrap: balance;
+  }
+  
+  /* 小さい画面での読みやすさを向上 */
+  .mobile-readable {
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  
+  /* レスポンシブなパディング */
+  .responsive-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* レスポンシブなマージン */
+  .responsive-margin-y {
+    @apply my-8 sm:my-12 lg:my-16;
+  }
+}

@@ -75,16 +75,15 @@ const HomePage: React.FC = () => {
               className={`${FONTS.SERIF} ${heroColors.TEXT.DEFAULT} mb-8 leading-tight`}
               style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
             >
-              美しい自然、おいしい食事
+              <span className="block sm:inline">美しい自然、</span>
+              <span className="block sm:inline">おいしい食事</span>
             </h1>
             <p
-              className={`${heroColors.TEXT.SEMI_MUTED} mb-12 max-w-xl`}
+              className={`${heroColors.TEXT.SEMI_MUTED} mb-12 max-w-xl leading-relaxed`}
               style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}
             >
               標高1,000mの中央アルプス山麓に佇む隠れ家。
-              <br />
               清らかな空気と星空、山々の恵みを感じる静寂の中で、
-              <br />
               本来の自分を取り戻す贅沢なひとときをお過ごしください。
             </p>
             <div className={`text-sm ${heroColors.TEXT.MUTED}`}>
@@ -142,14 +141,12 @@ const HomePage: React.FC = () => {
                     fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
                     lineHeight: '1.8',
                   }}
+                  className="leading-relaxed"
                 >
                   四季のうつろいに触れ、山里の暮らしに包まれながら、
-                  <br />
-                  心と体が喜ぶ食事と、あたたかなもてなしを味わうひととき
-                  <br />
+                  心と体が喜ぶ食事と、あたたかなもてなしを味わうひととき。
                   そんな時間の中で、ふと本来の自分を取り戻していく——
-                  <br />
-                  何気ない瞬間が、少しずつ、心をほどいてくれるのです
+                  何気ない瞬間が、少しずつ、心をほどいてくれるのです。
                 </p>
 
                 <div className="relative pt-4">
@@ -204,20 +201,20 @@ const HomePage: React.FC = () => {
                 className={`${FONTS.SERIF} mb-8 ${foodColors.TEXT.DEFAULT} leading-relaxed tracking-wider`}
                 style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
               >
-                身体と心が喜ぶ
-                <br />
-                健康的な美食
+                身体と心が喜ぶ健康的な美食
               </h2>
 
               <div
                 className={`space-y-6 ${foodColors.TEXT.SLIGHT_MUTED} leading-relaxed`}
               >
                 <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
-                  無農薬・有機栽培の食材を使用した健康的なお料理は、体にやさしく本物の味わいを堪能できます。中央アルプスの伏流水を使ったお料理は格別な味わいです。
+                  無農薬・有機栽培の食材を使用した健康的なお料理は、体にやさしく本物の味わいを堪能できます。
+                  中央アルプスの伏流水を使ったお料理は格別な味わいです。
                 </p>
 
                 <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
-                  自家製天然酵母パンや、丁寧に水出ししたコーヒーなど、素材と時間にこだわった料理の数々をお楽しみください。
+                  自家製天然酵母パンや、丁寧に水出ししたコーヒーなど、
+                  素材と時間にこだわった料理の数々をお楽しみください。
                 </p>
               </div>
             </div>

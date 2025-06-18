@@ -37,10 +37,7 @@ const Footer: React.FC = () => {
             <p
               className={`${DARK_SECTION.TEXT.SEMI_MUTED} mb-6 md:mb-8 leading-relaxed text-sm md:text-base hidden md:block`}
             >
-              標高およそ1,000mの中央アルプスの麓、
-              <br />
-              自然に囲まれた静寂の中で、特別なひとときを。
-              <br />
+              標高およそ1,000mの中央アルプスの麓、自然に囲まれた静寂の中で、特別なひとときを。
               安全な食と健康を大切にする山荘です。
             </p>
             <div className="flex space-x-3 md:space-x-4">
@@ -69,11 +66,7 @@ const Footer: React.FC = () => {
                     営業時間
                   </p>
                   <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} text-sm`}>
-                    11:00～17:00
-                    <br />
-                    <span className="text-xs text-gray-400">
-                      (夜はご予約のみの営業)
-                    </span>
+                    11:00～17:00（夜はご予約のみの営業）
                   </p>
                 </div>
               </li>
@@ -86,11 +79,7 @@ const Footer: React.FC = () => {
                     定休日
                   </p>
                   <p className={`${DARK_SECTION.TEXT.SEMI_MUTED} text-sm`}>
-                    毎週 月曜日・火曜日
-                    <br />
-                    <span className="text-xs text-gray-400">
-                      (6月は月・火も営業 11:00～15:00)
-                    </span>
+                    毎週 月曜日・火曜日（6月は月・火も営業 11:00～15:00）
                   </p>
                 </div>
               </li>
@@ -145,9 +134,7 @@ const Footer: React.FC = () => {
                   className={`mt-1 mr-3 ${DARK_SECTION.TEXT.MUTED}`}
                 />
                 <div className={`${DARK_SECTION.TEXT.SEMI_MUTED}`}>
-                  〒396-0029
-                  <br />
-                  長野県伊那市横山風の谷9749
+                  〒396-0029 長野県伊那市横山風の谷9749
                 </div>
               </li>
               <li className="flex items-center">

@@ -70,9 +70,7 @@ const AccessPage: React.FC = () => {
                           住所
                         </h3>
                         <p className={accessColors.TEXT.SEMI_MUTED}>
-                          〒396-0029
-                          <br />
-                          長野県伊那市横山風の谷9749
+                          〒396-0029 長野県伊那市横山風の谷9749
                         </p>
                       </div>
                       <div>
@@ -102,11 +100,7 @@ const AccessPage: React.FC = () => {
                           営業時間
                         </h3>
                         <p className={accessColors.TEXT.SEMI_MUTED}>
-                          11:00～17:00
-                          <br />
-                          <span className="text-sm">
-                            (夜はご予約のみの営業となります)
-                          </span>
+                          11:00～17:00 （夜はご予約のみの営業となります）
                         </p>
                       </div>
                       <div>
@@ -117,10 +111,7 @@ const AccessPage: React.FC = () => {
                         </h3>
                         <p className={accessColors.TEXT.SEMI_MUTED}>
                           毎週 月曜日・火曜日
-                          <br />
-                          <span className="text-sm">
-                            (薔薇の季節の6月は月曜日・火曜日も営業 11:00～15:00)
-                          </span>
+                          （薔薇の季節の6月は月曜日・火曜日も営業 11:00～15:00）
                         </p>
                       </div>
                     </div>

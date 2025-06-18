@@ -51,11 +51,8 @@ const LodgingPage: React.FC = () => {
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)' }}
             >
               大自然の懐に包まれ、ゆっくりとお休みください。
-              <br />
               朝は小鳥のさえずりで爽やかに目が覚め、楽しい一日の始まりです。
-              <br />
               標高1,000mの中央アルプスの麓で、澄んだ空気と静寂の中で過ごす特別なひとときをお楽しみください。
-              <br />
             </p>
 
             <div className="mb-16">
@@ -69,9 +66,7 @@ const LodgingPage: React.FC = () => {
                 className={`${FONTS.SERIF} mb-8 ${roomsColors.TEXT.DEFAULT} leading-relaxed tracking-wider`}
                 style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
               >
-                快適にお過ごしいただける
-                <br />
-                客室をご用意
+                快適にお過ごしいただける客室をご用意
               </h2>
             </div>
 
