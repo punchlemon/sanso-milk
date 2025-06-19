@@ -104,7 +104,7 @@ const HomePage: React.FC = () => {
               className="hidden lg:block absolute overflow-hidden shadow-xl z-10"
               style={{
                 aspectRatio: '4/3',
-                width: '45vw',
+                width: 'min(40vw, 500px)', // 最大幅500pxを設定
                 right: '0%',
                 top: 0,
               }}
@@ -130,7 +130,7 @@ const HomePage: React.FC = () => {
               </h2>
 
               <div
-                className={`${conceptColors.TEXT.SEMI_MUTED} leading-relaxed lg:max-w-[65%]`}
+                className={`${conceptColors.TEXT.SEMI_MUTED} leading-relaxed lg:max-w-[55%] xl:max-w-[600px]`}
               >
                 <p style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)' }}>
                   日常を離れて、深呼吸したくなるような時間の中へ。
@@ -166,9 +166,10 @@ const HomePage: React.FC = () => {
                   style={{ marginTop: '5vw' }}
                 >
                   <div
-                    className="block overflow-hidden shadow-xl z-10 w-[70vw] lg:w-[35vw]"
+                    className="block overflow-hidden shadow-xl z-10 lg:max-w-[400px]"
                     style={{
                       aspectRatio: '4/3',
+                      width: 'min(70vw, 450px)', // モバイル用の最大幅
                       minWidth: '320px', // 最小サイズを320pxに固定
                     }}
                   >
